@@ -6,4 +6,5 @@ all:
 clean:
 	rm grammar.tab.c grammar.tab.h lex.yy.c grammar.output out
 test:
-	./out test.txt
+	./out test/test.txt
+	./out test/test.txt

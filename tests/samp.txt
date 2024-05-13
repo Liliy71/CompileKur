@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<h2>Элемент samp</h2>
+
+<p>Элемент samp используется для определения образца вывода компьютерной программы.</p>
+
+<p>Сообщение с моего компьютера:</p>
+<p><samp>Файл не найден.<br>Чтобы продолжить, нажмите F1</samp></p>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Заголовок страницы</title>
+  <base href="https://www.schoolsw3.com/" target="_blank">
+</head>
+<body>
+
+<h1>Элемент base</h1>
+
+<p><img src="images/stickman.gif" width="24" height="39" alt="Stickman"> – Обратите внимание, что мы указали только относительный адрес для изображения. Поскольку мы указали базовый URL-адрес в разделе заголовка, браузер будет искать изображение по адресу «https://www.w3schools.com/images/stickman.gif».</p>
+
+<p><a href="tags/tag_base.php">HTML тег base</a>. Обратите внимание, что ссылка открывается в новом окне, даже если у нее нет атрибута target="_blank". Это связано с тем, что целевой атрибут базового элемента имеет значение «_blank».</p>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<h2>Элемент var</h2>
+
+<p>Площадь треугольника равна: 1/2 x <var>b</var> x <var>h</var>, где <var>b</var> — основание, а <var>h </var> — высота по вертикали.</p>
+
+</body>
+</html>

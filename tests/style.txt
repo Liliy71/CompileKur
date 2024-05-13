@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Название страницы</title>
+  <style>
+    body {background-color: powderblue;}
+    h1 {color: red;}
+    p {color: blue;}
+  </style>
+</head>  
+<body>
+
+<h1>Это заголовок</h1>
+<p>Это параграф.</p>
+  
+<p>Содержимое элемента body отображается в окне браузера.</p>
+<p>Содержимое титровального элемента отображается на вкладке браузера, в избранном и в результатах поисковых систем.</p>
+
+</body>
+</html>
