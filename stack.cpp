@@ -41,7 +41,7 @@ void tagStackPop() {
 }
 
 int tagStackIsEmpty() {
-	return top == NULL;
+	return (top == NULL);
 }
 
 char* tagStackTop() {

@@ -8,6 +8,7 @@
 	
 	extern FILE* yyin;
 	int line = 1;
+	int flag_warning=1;
 	#ifndef unix
 	#define fileno _fileno
 	#endif
@@ -139,7 +140,7 @@ attributes1			[aA][cC][cC][eE][pP][tT]|[aA][cC][cC][eE][pP][tT][-][cC][hH][aA][r
 attributes2			[cC][oO][nN][tT][eE][nN][tT][eE][dD][iI][tT][aA][bB][lL][eE]|[cC][oO][nN][tT][rR][oO][lL][sS]|[cC][oO][oO][rR][dD][sS]|[dD][aA][tT][aA]|[dD][aA][tT][eE][tT][iI][mM][eE]|[dD][eE][fF][aA][uU][lL][tT]|[dD][eE][fF][eE][rR]|[dD][iI][rR]|[dD][iI][rR][nN][aA][mM][eE]|[dD][iI][sS][aA][bB][lL][eE][dD]|[dD][oO][wW][nN][lL][oO][aA][dD]|[dD][rR][aA][gG][gG][aA][bB][lL][eE]|[eE][nN][cC][tT][yY][pP][eE]|[fF][oO][rR]|[fF][oO][rR][mM]|[fF][oO][rR][mM][aA][cC][tT][iI][oO][nN]|[hH][eE][aA][dD][eE][rR][sS]
 attributes3			[hH][eE][iI][gG][hH][tT]|[hH][iI][dD][dD][eE][nN]|[hH][iI][gG][hH]|[hH][rR][eE][fF]|[hH][rR][eE][fF][lL][aA][nN][gG]|[hH][tT][tT][pP][-][eE][qQ][uU][iI][vV]|[iI][dD]|[iI][sS][mM][aA][pP]|[kK][iI][nN][dD]|[lL][aA][bB][eE][lL]|[lL][aA][nN][gG]|[lL][iI][sS][tT]|[lL][oO][oO][pP]|[lL][oO][wW]|[mM][aA][xX]|[mM][aA][xX][lL][eE][nN][gG][tT][hH]|[mM][eE][dD][iI][aA]|[mM][eE][tT][hH][oO][dD]|[mM][iI][nN]|[mM][uU][lL][tT][iI][pP][lL][eE]|[mM][uU][tT][eE][dD]|[nN][aA][mM][eE]|[nN][oO][vV][aA][lL][iI][dD][aA][tT][eE]
 attributes4			[rR][eE][aA][dD][oO][nN][lL][yY]|[rR][eE][lL]|[rR][eE][qQ][uU][iI][rR][eE][dD]|[rR][eE][vV][eE][rR][sS][eE][dD]|[rR][oO][wW][sS]|[rR][oO][wW][sS][pP][aA][nN]|[sS][aA][nN][dD][bB][oO][xX]|[sS][cC][oO][pP][eE]|[sS][eE][lL][eE][cC][tT][eE][dD]|[sS][hH][aA][pP][eE]|[sS][iI][zZ][eE]|[sS][iI][zZ][eE][sS]|[sS][pP][aA][nN]|[sS][pP][eE][lL][lL][cC][hH][eE][cC][kK]|[sS][rR][cC]|[sS][rR][cC][dD][oO][cC]|[sS][rR][cC][lL][aA][nN][gG]|[sS][rR][cC][sS][eE][tT]|[sS][tT][aA][rR][tT]|[sS][tT][eE][pP]
-attributes5			[tT][aA][bB][iI][nN][dD][eE][xX]|[tT][aA][rR][gG][eE][tT]|[tT][rR][aA][nN][sS][lL][aA][tT][eE]|[tT][yY][pP][eE]|[uU][sS][eE][mM][aA][pP]|[vV][aA][lL][uU][eE]|[wW][iI][dD][tT][hH]|[wW][rR][aA][pP]|[pP][rR][oO][pP][eE][rR][tT][yY]|[sS][tT][yY][lL][eE]|[rR][oO][lL][eE]
+attributes5			[tT][aA][bB][iI][nN][dD][eE][xX]|[tT][iI][tT][lL][eE]|[tT][aA][rR][gG][eE][tT]|[tT][rR][aA][nN][sS][lL][aA][tT][eE]|[tT][yY][pP][eE]|[uU][sS][eE][mM][aA][pP]|[vV][aA][lL][uU][eE]|[wW][iI][dD][tT][hH]|[wW][rR][aA][pP]|[pP][rR][oO][pP][eE][rR][tT][yY]|[sS][tT][yY][lL][eE]|[rR][oO][lL][eE]
 
 events1				[oO][nN][aA][bB][oO][rR][tT]|[oO][nN][aA][fF][tT][eE][rR][pP][rR][iI][nN][tT]|[oO][nN][bB][eE][fF][oO][rR][eE][pP][rR][iI][nN][tT]|[oO][nN][bB][eE][fF][oO][rR][eE][uU][nN][lL][oO][aA][dD]|[oO][nN][bB][lL][uU][rR]|[oO][nN][cC][aA][nN][pP][lL][aA][yY]|[oO][nN][cC][aA][nN][pP][lL][aA][yY][tT][hH][rR][oO][uU][gG][hH]|[oO][nN][cC][hH][aA][nN][gG][eE]|[oO][nN][cC][lL][iI][cC][kK]|[oO][nN][cC][oO][nN][tT][eE][xX][tT][mM][eE][nN][uU]|[oO][nN][cC][oO][pP][yY]
 events2				[oO][nN][cC][uU][eE][cC][hH][aA][nN][gG][eE]|[oO][nN][cC][uU][tT]|[oO][nN][dD][bB][lL][cC][lL][iI][cC][kK]|[oO][nN][dD][rR][aA][gG]|[oO][nN][dD][rR][aA][gG][eE][nN][dD]|[oO][nN][dD][rR][aA][gG][eE][nN][tT][eE][rR]|[oO][nN][dD][rR][aA][gG][lL][eE][aA][vV][eE]|[oO][nN][dD][rR][aA][gG][oO][vV][eE][rR]|[oO][nN][dD][rR][aA][gG][sS][tT][aA][rR][tT]|[oO][nN][dD][rR][oO][pP]|[oO][nN][dD][uU][rR][aA][tT][iI][oO][nN][cC][hH][aA][nN][gG][eE]|[oO][nN][eE][mM][pP][tT][iI][eE][dD]|[oO][nN][eE][nN][dD][eE][dD]
@@ -165,7 +166,7 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 }
 
 \<{tagDOCTYPEold} {
-	printf("WARNING: non-HTML5 docktype element on line %d.\n", line);
+	HandlerWarning("Old version of the docktype for HTML5");
 	return TAG_DOCKTYPE;
 }
 
@@ -231,7 +232,7 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 }
 
 \<{oldVersionTags} {
-	printf("WARNING: no HTML5 tag %s %d\n", yytext, line);
+	HandlerWarning("Old version of the tag for HTML5");
 	tagStackPush(yytext);
 	BEGIN(attr_exp);
 	return COMMON_TAG;
@@ -263,38 +264,35 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 }
 			 
 \<\/{voidTags}{whitespace}*\> {
-	printf("WARNING: non-HTML5 construction: %s, %d\n", yytext, line);
+	HandlerWarning("Non-HTML5 construction");
 }
 			 
 \<{name} { 
-	printf("WARNING: unknown tag %s, %d\n", yytext, line);
+	HandlerWarning("Unknown tag");
 }
 			 
 \<\/{name}{whitespace}*\> { 
-	printf("WARNING: unknown end tag %s, %d\n", yytext, line);
+	HandlerWarning("Unknown end tag");
 }
 
 
 <attr_exp>{
-	{attributesALL}{whitespace}*[=] { 
-		//printf("[attr ok]: %s\n", yytext);
+	{attributesALL}{whitespace}*[=] {
 		return ATTRIBUTE; 
 	}
 	
-	{oldVersionAttr}{whitespace}*[=] { 
-		//printf("[old attr]: %s\n", yytext);
-		printf("WARNING: no HTML5 attribute %s, %d\n", yytext, line);
+	{oldVersionAttr}{whitespace}*[=] {
+		HandlerWarning("Old version of the attribute for HTML5");
 		return ATTRIBUTE; 
 	}
 	
 	{name}{whitespace}*[=] { 
-		//printf("[unknown attr]: %s\n", yytext);
-		printf("WARNING: unknown attribute %s, %d\n", yytext, line);
+		HandlerWarning("Unknown attribute");
+		flag_warning=0;
 		return ATTRIBUTE;
 	}
 			 
 	{whitespace}*{attributesValue} {
-		//printf("[attr value ok]: %s\n", yytext);
 		return VALUE;
 	}
 	
@@ -303,13 +301,12 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 	}
 
 	\/\> {
-		printf("WARNING: non-HTML5 construction - selfclosing void tag: %s, %d\n", yytext, line);
+		HandlerWarning("Non-HTML5 construction - selfclosing void tag");
 		BEGIN(0);
 		return CLOSING_MORE_SIGN;
 	}
 
 	[>] {
-		//printf("CLOSING_MORE_SIGN: %s\n", yytext);
 		BEGIN(0);
 		return CLOSING_MORE_SIGN;
 	}
@@ -322,28 +319,25 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 }
 
 <title_attr_exp>{
-	{attributesALL}{whitespace}*[=] { 
-		//printf("[attr ok]: %s\n", yytext);
+	{attributesALL}{whitespace}*[=] {
 		return ATTRIBUTE; 
 	}
 	
 	{oldVersionAttr}{whitespace}*[=] { 
-		printf("WARNING: no HTML5 attribute %s, %d\n", yytext, line);
+		HandlerWarning("Old version of the attribute for HTML5");
 		return ATTRIBUTE; 
 	}
 	
 	{name}{whitespace}*[=] { 
-		printf("WARNING: unknown attribute %s, %d\n", yytext, line);
+		HandlerWarning("Unknown attribute");
 		return ATTRIBUTE;
 	}
 			 
 	{whitespace}*{attributesValue} {
-		//printf("[attr value ok]: %s\n", yytext);
 		return VALUE;
 	}
 	
 	[>] {
-		//printf("CLOSING_MORE_SIGN after title: %s\n", yytext);
 		BEGIN(title_text_exp);
 		return CLOSING_MORE_SIGN;
 	}
@@ -357,7 +351,6 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 
 <title_text_exp>{
 	\<\/{tagTITLE}{whitespace}*\> {
-		//printf("Empty TITLE_TEXT");
 		return TAG_TITLE_CLOSE;
 	}
 
@@ -370,28 +363,25 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 }
 
 <style_attr_exp>{
-	{attributesALL}{whitespace}*[=] { 
-		//printf("[attr ok]: %s\n", yytext);
+	{attributesALL}{whitespace}*[=] {
 		return ATTRIBUTE; 
 	}
 	
 	{oldVersionAttr}{whitespace}*[=] { 
-		printf("WARNING: no HTML5 attribute %s, %d\n", yytext, line);
+		HandlerWarning("Old version of the attribute for HTML5");
 		return ATTRIBUTE; 
 	}
 	
 	{name}{whitespace}*[=] { 
-		printf("WARNING: unknown attribute %s, %d\n", yytext, line);
+		HandlerWarning("Unknown attribute");
 		return ATTRIBUTE;
 	}
 			 
 	{whitespace}*{attributesValue} {
-		//printf("[attr value ok]: %s\n", yytext);
 		return VALUE;
 	}
 	
 	[>] {
-		//printf("CLOSING_MORE_SIGN after style: %s\n", yytext);
 		BEGIN(style_section);
 		return CLOSING_MORE_SIGN;
 	}
@@ -405,7 +395,6 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 
 <style_section>{
 	\<\/{styleTag}{whitespace}*\> {
-		//printf("style tag close: %s\n", yytext);
 		BEGIN(0);
 		return TAG_STYLE_CLOSE;
 	}
@@ -418,28 +407,21 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 }
 
 <script_attr_exp>{
-	{attributesALL}{whitespace}*[=] { 
-		//printf("[attr ok]: %s\n", yytext);
+	{attributesALL}{whitespace}*[=] {
 		return ATTRIBUTE; 
 	}
-	
 	{oldVersionAttr}{whitespace}*[=] { 
-		printf("WARNING: no HTML5 attribute %s, %d\n", yytext, line);
+		HandlerWarning("Old version of the attribute for HTML5");
 		return ATTRIBUTE; 
 	}
-	
-	{name}{whitespace}*[=] { 
-		printf("WARNING: unknown attribute %s, %d\n", yytext, line);
+	{name}{whitespace}*[=] {
+		HandlerWarning("Unknown attribute");
 		return ATTRIBUTE;
 	}
-			 
 	{whitespace}*{attributesValue} {
-		//printf("[attr value ok]: %s\n", yytext);
 		return VALUE;
 	}
-
 	[>] {
-		//printf("CLOSING_MORE_SIGN after script: %s\n", yytext);
 		BEGIN(script_section);
 		return CLOSING_MORE_SIGN;
 	}
@@ -455,7 +437,6 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 
 <script_section>{
 	\<\/{scriptTag}{whitespace}*\> {
-		//printf("script tag close: %s\n", yytext);
 		BEGIN(0);
 		return TAG_SCRIPT_CLOSE;
 	}
@@ -468,14 +449,12 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 }
 
 {commentTagStart} {
-	//printf("comment open: %s\n", yytext);
 	BEGIN(comment_continue);
 	return TAG_COMMENT_START;
 }
 
 <comment_continue>{
 	{commentTagEnd} {
-		//printf("comment close: %s\n", yytext);
 		BEGIN(0);
 		return TAG_COMMENT_END;
 	}
@@ -487,41 +466,39 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 	. ;
 }
 
-{str} ;
+{str} 			;
 
-[\n] {
-line++;
-}
+[\n] 			{line++;}
+[\r]			; 
 
-[\r] ; 
-
-. ;
+. 				;
 
 %% 
-  
+void HandlerWarning(const char* msg){
+	printf("WARNING: %s\n, line: %d\n", msg, line);
+	flag_warning=0;
+}
 int yywrap(){}
 
-void yyerror(char *msg)
-{
-    printf("%s \n", msg); 
+void yyerror(char *msg){
+    fprintf(stderr,"ERROR: %s\n", msg);
 }
-  
 int main(int argc, char*argv[]){
 	errno=0;
     
 	if (argc < 2){
-		printf("no filename\n");
+		printf("ERROR: Incorrect number of command arguments\n");
 		exit(-1);
 	}
     yyin = fopen(argv[1], "r");
     if (yyin == NULL) {
-		printf("file not found.\n");
+		printf("ERROR: The text file was not found\n");
 		exit(-1);
 	} 
 	tagStackInit();
 	yyparse();
 	tagStackDeinit();
 	fclose(yyin);
-	printf("Program is correct.\n");
+	if(flag_warning) printf("Program is correct.\n");
     return 0;
 }
