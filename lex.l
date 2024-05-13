@@ -1,7 +1,7 @@
 /* Declaration section*/
 %{
 	#define _CRT_SECURE_NO_WARNINGS
-	#include "stack.cpp"
+	
 	#include <stdio.h>
     #include <errno.h>
 	#include "grammar.tab.h"
@@ -225,13 +225,6 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 	//return COMMON_TAG_CLOSE;
 }
 
-\<\/{oldVersionTags}{whitespace}*\> { 
-	//printf("old version end tag: %s\n", yytext);
-	printf("WARNING: no HTML5 end tag %s, %d\n", yytext, line);
-	tagStackCheck(yytext);
-	BEGIN(attr_exp);
-	return COMMON_TAG_CLOSE;
-}
 
 <attr_exp>{
 	{attributesALL}{whitespace}*[=] { 
@@ -471,8 +464,8 @@ int main(int argc, char*argv[]){
 		printf("no filename\n");
 		exit(-1);
 	}
-
-    if ((errno = fopen_s(&yyin, argv[1], "r")) != 0) {
+    yyin = fopen(argv[1], "r");
+    if (yyin == NULL) {
 		printf("file not found.\n");
 		exit(-1);
 	} 
