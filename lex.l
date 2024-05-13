@@ -266,11 +266,11 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 }
 			 
 \<{name} { 
-	HandlerWarning("Unknown tag");
+	HandlerError("Unknown tag");
 }
 			 
 \<\/{name}{whitespace}*\> { 
-	HandlerWarning("Unknown end tag");
+	HandlerError("Unknown end tag");
 }
 
 
