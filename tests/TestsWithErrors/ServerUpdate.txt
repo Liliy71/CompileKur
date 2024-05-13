@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Событие source.onmessage — schoolsw3.com</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+</html>
+ <body>
+ 
+  <h1>HTML5 Событие source.onmessage</h1>
+
+  <div id="result"></div>
+
+   <script>
+    if(typeof(EventSource) !== "undefined") {
+     var source = new EventSource("demo_sse.php");
+      source.onmessage = function(event) {
+       document.getElementById("result").innerHTML += event.data + "<br>";
+      };
+    } else {
+     document.getElementById("result").innerHTML = "Извините, Ваш браузер не поддерживает события, отправленные сервером...";
+     }
+   </script>
+
+ </body>
+</html>
