@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = "Привет JavaScript!";
+</script>
+
+<noscript>Извините, Ваш браузер не поддерживает JavaScript!</noscript>
+
+<p>Браузер без поддержки JavaScript покажет текст, написанный внутри элемента noscript.</p>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<h2>Элемент kbd</h2>
+
+<p>Элемент kbd используется для определения ввода с клавиатуры:</p>
+
+<p>Сохраните документ, нажав <kbd>Ctrl + S</kbd></p>
+
+</body>
+</html>

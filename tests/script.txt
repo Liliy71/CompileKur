@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Название страницы</title>
+  <script>
+  function myFunction() {
+    document.getElementById("demo").innerHTML = "Привет JavaScript!";
+  }
+  </script>
+</head>
+<body>
+
+<h1>Моя Веб-Страница</h1>
+<p id="demo">Параграф</p>
+<button type="button" onclick="myFunction()">Попробуйте</button>
+
+</body>
+</html>

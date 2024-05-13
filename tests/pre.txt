@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<h2>Элемент pre и code</h2>
+
+<p>Элемент кода не сохраняет пробелы и разрыв строк.</p>
+<p>Чтобы исправить это, можно поместить элемент кода внутри элемента pre:</p>
+
+<pre>
+<code>
+x = 5;
+y = 6;
+z = x + y;
+</code>
+</pre>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+
+</head>
+<body>
+
+<h1>Мой первый заголовок</h1>
+
+<p>Мой первый параграф.</p>
+
+<h1>Это заголовок 1</h1>
+<h2>Это заголовок 2</h2>
+<h3>Это заголовок 3</h3>
+<h4>Это заголовок 4</h4>
+<h5>Это заголовок 5</h5>
+<h6>Это заголовок 6</h6>
+
+<p>Это параграф.</p>
+<p>Это еще один параграф.</p>
+
+<h2>HTML ссылки</h2>
+<p>HTML ссылки определяются тегом:</p>
+
+<a href="https://www.schoolsw3.com">Это ссылка</a>
+
+<h2>HTML изображения</h2>
+<p>HTML изображения определяются тегом img:</p>
+
+<img src="schoolsw3.jpg" alt="Изображение schoolsw3.com" width="104" height="142">
+
+<h2>HTML кнопки</h2>
+<p>HTML кнопки определяются тегом button:</p>
+
+<button>Нажмите на меня</button>
+
+<ul>
+  <li>Кофе</li>
+  <li>Чай</li>
+  <li>Молоко</li>
+</ul>  
+
+<h2>Упорядоченный список HTML</h2>
+
+<ol>
+  <li>Кофе</li>
+  <li>Чай</li>
+  <li>Молоко</li>
+</ol> 
+
+</body>
+</html>

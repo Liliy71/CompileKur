@@ -120,7 +120,7 @@
       </div>
     </header>
     <aside class="left">
-      <img src="./assets/html/mr-camel.jpg" width="160px" />
+      <img src="./assets/html/mr-camel.jpg" width="160px">
       <ul>
         <li><a class="active" href="#home">Home</a></li>
         <li><a href="#career">Career</a></li>
@@ -153,13 +153,12 @@
           <td>Storing some fat for you</td>
           <td>Taking you through the desert</td>
         </tr>
-        <tr>
       </table>
       <form>
         <label>Email: <input type="text" name="email"></label><br>
         <label> Mobile: <input type="text" name="mobile"> </label><br>
         <textarea name="comments" rows="4">Enter your message</textarea><br>
-        <input type="submit" value="Submit" /><br>
+        <input type="submit" value="Submit"><br>
       </form>
     </main>
     <footer class="footer">&copy; Copyright Mr. Camel</footer>
