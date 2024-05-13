@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<h1>HTML Ссылки</h1>
+
+<p><a href="https://www.schoolsw3.com/">Посетите Schoolsw3</a></p>
+
+<h2>Атрибут target</h2>
+
+<a href="https://www.schoolsw3.com/" target="_blank">Посетите Schoolsw3!</a> 
+
+<p>Если установить target="_blank", ссылка откроется в новом окне или вкладке браузера.</p>
+
+<h2>Абсолютный URL</h2>
+<p><a href="https://www.w3.org/">W3C</a></p>
+<p><a href="https://www.google.com/">Google</a></p>
+
+<h2>Относительный URL</h2>
+<p><a href="html_images.php">HTML изображение</a></p>
+<p><a href="/css/default.php">CSS учебник</a></p>
+
+<h2>Изображение как ссылка</h2>
+
+<p>Ссылкой является изображение. Вы можете нажать на нее.</p>
+
+<a href="index.php"><img src="smiley.gif" alt="HTML учебник" style="width:42px;height:42px;border:0"></a>
+
+<h2>Ссылка на email</h2>
+
+<p>Чтобы создать ссылку, которая открывается в почтовой программе пользователя (чтобы позволить ему отправить новое письмо), напишите нам по адресу: внутри атрибута href:</p>
+
+<p><a href="mailto:someone@example.com">Отправить электронную почту</a></p>
+
+<h2>Cсылка как кнопка</h2>
+
+<p>Нажмите на кнопку, чтобы перейти к HTML учебнику HTML.</p>
+
+<button onclick="document.location='index.php'">HTML Учебник</button>
+
+<h2>Ссылка title</h2>
+
+<p>Атрибут title задает дополнительную информацию об элементе. Информация чаще всего отображается в виде текста всплывающей подсказки при наведении курсора мыши на элемент.</p>
+<a href="https://www.schoolsw3.com/html/" title="Перейти Schoolsw3 в HTML раздел">
+Посетите HTML Учебник</a>
+
+<h2>Внешние пути ссылки</h2>
+
+<p>В этом примере используется полный URL-адрес для ссылки на веб-страницу:</p>
+
+<p><a href="https://www.schoolsw3.com/html/index.php">HTML Учебник</a></p>
+
+<h2>Внешние пути ссылки</h2>
+
+<p>Этот пример ссылается на страницу, расположенную в папке html на текущем веб-сайте:</p>
+
+<p><a href="/html/index.php">HTML Учебник</a></p>
+
+
+<h2>Ссылка внешние пути</h2>
+
+<p>Этот пример ссылается на страницу, расположенную в той же папке, что и текущая страница:</p>
+
+<p><a href="index.php">HTML Учебник</a></p>
+
+</body>
+</html>

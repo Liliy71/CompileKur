@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<!-- Это комментарий -->
+<p>Это параграф.</p>
+<!-- Комментарии не отображаются в браузере -->
+
+<p>Это параграф.</p>
+<!-- Не отображать это в данный момент
+<img border="0" src="pic_mountain.jpg" alt="Гора">
+-->
+<p>это тоже параграф.</p>
+
+</body>
+</html>
