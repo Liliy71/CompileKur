@@ -80,8 +80,6 @@ void tagStackPrint() {
 		tmp = tmp->link;
 	}
 }
-
-
 void tagStackCheck(char* data) {
 	if (tagStackIsEmpty()) {
 		printf("ERROR: there were no opening tags.\n");
