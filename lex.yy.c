@@ -6189,21 +6189,19 @@ case 3:
 YY_RULE_SETUP
 #line 173 "lex.l"
 {
-	printf("ERROR: XML declaration %d.\n", line);
-	exit(-1);
+	HandlerError("XML declaration");
 }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 178 "lex.l"
+#line 177 "lex.l"
 {
-	printf("ERROR: CDATA declaration (XML), %d.\n", line);
-	exit(-1);	
+	HandlerError("CDATA declaration(XML)");
 }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 183 "lex.l"
+#line 181 "lex.l"
 {
 	BEGIN(attr_exp);
 	return TAG_HTML;
@@ -6211,7 +6209,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 188 "lex.l"
+#line 186 "lex.l"
 {
 	BEGIN(attr_exp);
 	return TAG_HEAD;
@@ -6219,7 +6217,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 193 "lex.l"
+#line 191 "lex.l"
 {
 	BEGIN(attr_exp);
 	return TAG_BODY;
@@ -6227,7 +6225,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 198 "lex.l"
+#line 196 "lex.l"
 {
 	BEGIN(title_attr_exp);
 	return TAG_TITLE;
@@ -6235,7 +6233,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 203 "lex.l"
+#line 201 "lex.l"
 {
 	tagStackPush(yytext);
 	BEGIN(attr_exp);
@@ -6245,7 +6243,7 @@ YY_RULE_SETUP
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 209 "lex.l"
+#line 207 "lex.l"
 {
 	return TAG_HTML_CLOSE;
 }
@@ -6253,7 +6251,7 @@ YY_RULE_SETUP
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 213 "lex.l"
+#line 211 "lex.l"
 {
 	return TAG_HEAD_CLOSE;
 }
@@ -6261,7 +6259,7 @@ YY_RULE_SETUP
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 217 "lex.l"
+#line 215 "lex.l"
 {
 	return TAG_BODY_CLOSE;
 }
@@ -6269,14 +6267,14 @@ YY_RULE_SETUP
 case 13:
 /* rule 13 can match eol */
 YY_RULE_SETUP
-#line 221 "lex.l"
+#line 219 "lex.l"
 {
 	return TAG_TITLE_CLOSE;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 225 "lex.l"
+#line 223 "lex.l"
 {
 	BEGIN(attr_exp);
 	return GENERAL_TAG;
@@ -6285,14 +6283,14 @@ YY_RULE_SETUP
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 230 "lex.l"
+#line 228 "lex.l"
 {
 	return GENERAL_TAG_CLOSE;
 }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 234 "lex.l"
+#line 232 "lex.l"
 {
 	HandlerWarning("Old version of the tag for HTML5");
 	tagStackPush(yytext);
@@ -6302,7 +6300,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 241 "lex.l"
+#line 239 "lex.l"
 {
 	BEGIN(attr_exp);
 	return COMMON_VOID_TAG;
@@ -6310,7 +6308,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 246 "lex.l"
+#line 244 "lex.l"
 {
     BEGIN(attr_exp);
 	return HEAD_SECTION_VOID_TAG;
@@ -6318,7 +6316,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 251 "lex.l"
+#line 249 "lex.l"
 {
 	BEGIN(style_attr_exp);
 	return TAG_STYLE;
@@ -6326,7 +6324,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 256 "lex.l"
+#line 254 "lex.l"
 {
 	BEGIN(script_attr_exp);
 	return TAG_SCRIPT;
@@ -6335,7 +6333,7 @@ YY_RULE_SETUP
 case 21:
 /* rule 21 can match eol */
 YY_RULE_SETUP
-#line 261 "lex.l"
+#line 259 "lex.l"
 {
 	tagStackCheck(yytext);
 	return COMMON_TAG_CLOSE;
@@ -6344,14 +6342,14 @@ YY_RULE_SETUP
 case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
-#line 266 "lex.l"
+#line 264 "lex.l"
 {
 	HandlerWarning("Non-HTML5 construction");
 }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 270 "lex.l"
+#line 268 "lex.l"
 { 
 	HandlerWarning("Unknown tag");
 }
@@ -6359,7 +6357,7 @@ YY_RULE_SETUP
 case 24:
 /* rule 24 can match eol */
 YY_RULE_SETUP
-#line 274 "lex.l"
+#line 272 "lex.l"
 { 
 	HandlerWarning("Unknown end tag");
 }
@@ -6368,7 +6366,7 @@ YY_RULE_SETUP
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 280 "lex.l"
+#line 278 "lex.l"
 {
 		return ATTRIBUTE; 
 	}
@@ -6376,7 +6374,7 @@ YY_RULE_SETUP
 case 26:
 /* rule 26 can match eol */
 YY_RULE_SETUP
-#line 284 "lex.l"
+#line 282 "lex.l"
 {
 		HandlerWarning("Old version of the attribute for HTML5");
 		return ATTRIBUTE; 
@@ -6385,7 +6383,7 @@ YY_RULE_SETUP
 case 27:
 /* rule 27 can match eol */
 YY_RULE_SETUP
-#line 289 "lex.l"
+#line 287 "lex.l"
 { 
 		HandlerWarning("Unknown attribute");
 		flag_warning=0;
@@ -6395,7 +6393,7 @@ YY_RULE_SETUP
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 295 "lex.l"
+#line 293 "lex.l"
 {
 		return VALUE;
 	}
@@ -6403,14 +6401,14 @@ YY_RULE_SETUP
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 299 "lex.l"
+#line 297 "lex.l"
 {
 		line++;
 	}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 303 "lex.l"
+#line 301 "lex.l"
 {
 		HandlerWarning("Non-HTML5 construction - selfclosing void tag");
 		BEGIN(0);
@@ -6419,7 +6417,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 309 "lex.l"
+#line 307 "lex.l"
 {
 		BEGIN(0);
 		return CLOSING_MORE_SIGN;
@@ -6428,18 +6426,18 @@ YY_RULE_SETUP
 case 32:
 /* rule 32 can match eol */
 YY_RULE_SETUP
-#line 314 "lex.l"
+#line 312 "lex.l"
 ;
 	YY_BREAK
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 316 "lex.l"
+#line 314 "lex.l"
 ;
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 318 "lex.l"
+#line 316 "lex.l"
 ;
 	YY_BREAK
 
@@ -6447,7 +6445,7 @@ YY_RULE_SETUP
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 322 "lex.l"
+#line 320 "lex.l"
 {
 		return ATTRIBUTE; 
 	}
@@ -6455,7 +6453,7 @@ YY_RULE_SETUP
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 326 "lex.l"
+#line 324 "lex.l"
 { 
 		HandlerWarning("Old version of the attribute for HTML5");
 		return ATTRIBUTE; 
@@ -6464,7 +6462,7 @@ YY_RULE_SETUP
 case 37:
 /* rule 37 can match eol */
 YY_RULE_SETUP
-#line 331 "lex.l"
+#line 329 "lex.l"
 { 
 		HandlerWarning("Unknown attribute");
 		return ATTRIBUTE;
@@ -6473,14 +6471,14 @@ YY_RULE_SETUP
 case 38:
 /* rule 38 can match eol */
 YY_RULE_SETUP
-#line 336 "lex.l"
+#line 334 "lex.l"
 {
 		return VALUE;
 	}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 340 "lex.l"
+#line 338 "lex.l"
 {
 		BEGIN(title_text_exp);
 		return CLOSING_MORE_SIGN;
@@ -6489,7 +6487,7 @@ YY_RULE_SETUP
 case 40:
 /* rule 40 can match eol */
 YY_RULE_SETUP
-#line 345 "lex.l"
+#line 343 "lex.l"
 {
 		line++;
 	}
@@ -6497,7 +6495,7 @@ YY_RULE_SETUP
 case 41:
 /* rule 41 can match eol */
 YY_RULE_SETUP
-#line 349 "lex.l"
+#line 347 "lex.l"
 ;
 	YY_BREAK
 
@@ -6505,14 +6503,14 @@ YY_RULE_SETUP
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 353 "lex.l"
+#line 351 "lex.l"
 {
 		return TAG_TITLE_CLOSE;
 	}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 357 "lex.l"
+#line 355 "lex.l"
 {
 		BEGIN(0);
 		return TITLE_TEXT;
@@ -6520,7 +6518,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 362 "lex.l"
+#line 360 "lex.l"
 ;
 	YY_BREAK
 
@@ -6528,7 +6526,7 @@ YY_RULE_SETUP
 case 45:
 /* rule 45 can match eol */
 YY_RULE_SETUP
-#line 366 "lex.l"
+#line 364 "lex.l"
 {
 		return ATTRIBUTE; 
 	}
@@ -6536,7 +6534,7 @@ YY_RULE_SETUP
 case 46:
 /* rule 46 can match eol */
 YY_RULE_SETUP
-#line 370 "lex.l"
+#line 368 "lex.l"
 { 
 		HandlerWarning("Old version of the attribute for HTML5");
 		return ATTRIBUTE; 
@@ -6545,7 +6543,7 @@ YY_RULE_SETUP
 case 47:
 /* rule 47 can match eol */
 YY_RULE_SETUP
-#line 375 "lex.l"
+#line 373 "lex.l"
 { 
 		HandlerWarning("Unknown attribute");
 		return ATTRIBUTE;
@@ -6554,14 +6552,14 @@ YY_RULE_SETUP
 case 48:
 /* rule 48 can match eol */
 YY_RULE_SETUP
-#line 380 "lex.l"
+#line 378 "lex.l"
 {
 		return VALUE;
 	}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 384 "lex.l"
+#line 382 "lex.l"
 {
 		BEGIN(style_section);
 		return CLOSING_MORE_SIGN;
@@ -6570,7 +6568,7 @@ YY_RULE_SETUP
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 389 "lex.l"
+#line 387 "lex.l"
 {
 		line++;
 	}
@@ -6578,7 +6576,7 @@ YY_RULE_SETUP
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 393 "lex.l"
+#line 391 "lex.l"
 ;
 	YY_BREAK
 
@@ -6586,7 +6584,7 @@ YY_RULE_SETUP
 case 52:
 /* rule 52 can match eol */
 YY_RULE_SETUP
-#line 397 "lex.l"
+#line 395 "lex.l"
 {
 		BEGIN(0);
 		return TAG_STYLE_CLOSE;
@@ -6595,14 +6593,14 @@ YY_RULE_SETUP
 case 53:
 /* rule 53 can match eol */
 YY_RULE_SETUP
-#line 402 "lex.l"
+#line 400 "lex.l"
 {
 		line++;
 	}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 406 "lex.l"
+#line 404 "lex.l"
 ;
 	YY_BREAK
 
@@ -6610,7 +6608,7 @@ YY_RULE_SETUP
 case 55:
 /* rule 55 can match eol */
 YY_RULE_SETUP
-#line 410 "lex.l"
+#line 408 "lex.l"
 {
 		return ATTRIBUTE; 
 	}
@@ -6618,7 +6616,7 @@ YY_RULE_SETUP
 case 56:
 /* rule 56 can match eol */
 YY_RULE_SETUP
-#line 413 "lex.l"
+#line 411 "lex.l"
 { 
 		HandlerWarning("Old version of the attribute for HTML5");
 		return ATTRIBUTE; 
@@ -6627,7 +6625,7 @@ YY_RULE_SETUP
 case 57:
 /* rule 57 can match eol */
 YY_RULE_SETUP
-#line 417 "lex.l"
+#line 415 "lex.l"
 {
 		HandlerWarning("Unknown attribute");
 		return ATTRIBUTE;
@@ -6636,14 +6634,14 @@ YY_RULE_SETUP
 case 58:
 /* rule 58 can match eol */
 YY_RULE_SETUP
-#line 421 "lex.l"
+#line 419 "lex.l"
 {
 		return VALUE;
 	}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 424 "lex.l"
+#line 422 "lex.l"
 {
 		BEGIN(script_section);
 		return CLOSING_MORE_SIGN;
@@ -6652,7 +6650,7 @@ YY_RULE_SETUP
 case 60:
 /* rule 60 can match eol */
 YY_RULE_SETUP
-#line 429 "lex.l"
+#line 427 "lex.l"
 {
 		line++;
 	}
@@ -6660,13 +6658,13 @@ YY_RULE_SETUP
 case 61:
 /* rule 61 can match eol */
 YY_RULE_SETUP
-#line 433 "lex.l"
+#line 431 "lex.l"
 ;
 	YY_BREAK
 case 62:
 /* rule 62 can match eol */
 YY_RULE_SETUP
-#line 435 "lex.l"
+#line 433 "lex.l"
 ;
 	YY_BREAK
 
@@ -6674,7 +6672,7 @@ YY_RULE_SETUP
 case 63:
 /* rule 63 can match eol */
 YY_RULE_SETUP
-#line 439 "lex.l"
+#line 437 "lex.l"
 {
 		BEGIN(0);
 		return TAG_SCRIPT_CLOSE;
@@ -6683,20 +6681,20 @@ YY_RULE_SETUP
 case 64:
 /* rule 64 can match eol */
 YY_RULE_SETUP
-#line 444 "lex.l"
+#line 442 "lex.l"
 {
 		line++;
 	}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 448 "lex.l"
+#line 446 "lex.l"
 ;
 	YY_BREAK
 
 case 66:
 YY_RULE_SETUP
-#line 451 "lex.l"
+#line 449 "lex.l"
 {
 	BEGIN(comment_continue);
 	return TAG_COMMENT_START;
@@ -6705,7 +6703,7 @@ YY_RULE_SETUP
 
 case 67:
 YY_RULE_SETUP
-#line 457 "lex.l"
+#line 455 "lex.l"
 {
 		BEGIN(0);
 		return TAG_COMMENT_END;
@@ -6714,44 +6712,44 @@ YY_RULE_SETUP
 case 68:
 /* rule 68 can match eol */
 YY_RULE_SETUP
-#line 462 "lex.l"
+#line 460 "lex.l"
 {
 		line++;
 	}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 466 "lex.l"
+#line 464 "lex.l"
 ;
 	YY_BREAK
 
 case 70:
 YY_RULE_SETUP
-#line 469 "lex.l"
+#line 467 "lex.l"
 ;
 	YY_BREAK
 case 71:
 /* rule 71 can match eol */
 YY_RULE_SETUP
-#line 471 "lex.l"
+#line 469 "lex.l"
 {line++;}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 472 "lex.l"
+#line 470 "lex.l"
 ; 
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 474 "lex.l"
+#line 472 "lex.l"
 ;
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 476 "lex.l"
+#line 474 "lex.l"
 ECHO;
 	YY_BREAK
-#line 6755 "lex.yy.c"
+#line 6753 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(attr_exp):
 case YY_STATE_EOF(title_attr_exp):
@@ -7822,11 +7820,15 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 476 "lex.l"
+#line 474 "lex.l"
 
 void HandlerWarning(const char* msg){
 	printf("WARNING: %s\n, line: %d\n", msg, line);
 	flag_warning=0;
+}
+void HandlerError(const char* msg){
+	printf("ERROR: %s\n, line: %d\n", msg, line);
+	exit(-1);
 }
 int yywrap(){}
 
@@ -7837,13 +7839,11 @@ int main(int argc, char*argv[]){
 	errno=0;
     
 	if (argc < 2){
-		printf("ERROR: Incorrect number of command arguments\n");
-		exit(-1);
+		HandlerError("Incorrect number of command arguments");
 	}
     yyin = fopen(argv[1], "r");
     if (yyin == NULL) {
-		printf("ERROR: The text file was not found\n");
-		exit(-1);
+		HandlerError("The test file was not found");
 	} 
 	tagStackInit();
 	yyparse();
@@ -7901,15 +7901,11 @@ int tagStackIsEmpty() {
 char* tagStackTop() {
 	if (!tagStackIsEmpty())
 		return top->tagName;
-	else
-		exit(1);
+	else exit(1);
 }
 
 void tagStackDeinit() {
-	while (!tagStackIsEmpty())
-	{
-		tagStackPop();
-	}
+	while (!tagStackIsEmpty()) tagStackPop();
 }
 
 void tagStackInit() {
@@ -7920,21 +7916,8 @@ void tagStackInit() {
 	top = NULL;
 }
 
-void tagStackPrint() {
-	tagStack* tmp;
-
-	if (top == NULL) {
-		printf("\nStack Underflow");
-		exit(1);
-	}
-
-	tmp = top;
-	while (tmp != NULL) {
-		printf(" %s ", tmp->tagName);
-		tmp = tmp->link;
-	}
-}
 void tagStackCheck(char* data) {
+
 	if (tagStackIsEmpty()) {
 		printf("ERROR: there were no opening tags.\n");
 		exit(-1);

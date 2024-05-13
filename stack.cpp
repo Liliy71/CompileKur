@@ -47,15 +47,11 @@ int tagStackIsEmpty() {
 char* tagStackTop() {
 	if (!tagStackIsEmpty())
 		return top->tagName;
-	else
-		exit(1);
+	else exit(1);
 }
 
 void tagStackDeinit() {
-	while (!tagStackIsEmpty())
-	{
-		tagStackPop();
-	}
+	while (!tagStackIsEmpty()) tagStackPop();
 }
 
 void tagStackInit() {
@@ -66,21 +62,8 @@ void tagStackInit() {
 	top = NULL;
 }
 
-void tagStackPrint() {
-	tagStack* tmp;
-
-	if (top == NULL) {
-		printf("\nStack Underflow");
-		exit(1);
-	}
-
-	tmp = top;
-	while (tmp != NULL) {
-		printf(" %s ", tmp->tagName);
-		tmp = tmp->link;
-	}
-}
 void tagStackCheck(char* data) {
+
 	if (tagStackIsEmpty()) {
 		printf("ERROR: there were no opening tags.\n");
 		exit(-1);

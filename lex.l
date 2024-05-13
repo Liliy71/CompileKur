@@ -171,13 +171,11 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 }
 
 {xmlTAG} {
-	printf("ERROR: XML declaration %d.\n", line);
-	exit(-1);
+	HandlerError("XML declaration");
 }
 
 {cdataTag} {
-	printf("ERROR: CDATA declaration (XML), %d.\n", line);
-	exit(-1);	
+	HandlerError("CDATA declaration(XML)");
 }
 
 \<{tagHTML} {
@@ -257,7 +255,7 @@ tagDOCTYPEold		\![dD][oO][cC][tT][yY][pP][eE][ ]+[hH][tT][mM][lL][ ]+[pP][uU][bB
 	BEGIN(script_attr_exp);
 	return TAG_SCRIPT;
 }
-			 
+		 
 \<\/{tagsAll}{whitespace}*\> {
 	tagStackCheck(yytext);
 	return COMMON_TAG_CLOSE;
@@ -478,6 +476,10 @@ void HandlerWarning(const char* msg){
 	printf("WARNING: %s\n, line: %d\n", msg, line);
 	flag_warning=0;
 }
+void HandlerError(const char* msg){
+	printf("ERROR: %s\n, line: %d\n", msg, line);
+	exit(-1);
+}
 int yywrap(){}
 
 void yyerror(char *msg){
@@ -487,13 +489,11 @@ int main(int argc, char*argv[]){
 	errno=0;
     
 	if (argc < 2){
-		printf("ERROR: Incorrect number of command arguments\n");
-		exit(-1);
+		HandlerError("Incorrect number of command arguments");
 	}
     yyin = fopen(argv[1], "r");
     if (yyin == NULL) {
-		printf("ERROR: The text file was not found\n");
-		exit(-1);
+		HandlerError("The test file was not found");
 	} 
 	tagStackInit();
 	yyparse();
