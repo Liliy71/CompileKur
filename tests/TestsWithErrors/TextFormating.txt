@@ -2,11 +2,11 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Заголовок страницы</title>
+<title>Заголовок страницы
 </head>
 <body>
 
-<h2>Элемент b</h2>
+<h2>Элемент b
 
 <p>Этот текст нормальный.</p>
 
