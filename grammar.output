@@ -1,0 +1,871 @@
+Grammar
+
+    0 $accept: html_doc $end
+
+    1 html_doc: TAG_DOCKTYPE html_section
+    2         | comments_before_open_tag TAG_DOCKTYPE html_section
+    3         | error
+
+    4 comments_before_open_tag: TAG_COMMENT_START TAG_COMMENT_END
+    5                         | comments_before_open_tag TAG_COMMENT_START TAG_COMMENT_END
+
+    6 html_section: html_section_start head_section body_section TAG_HTML_CLOSE
+    7             | html_section_start head_section body_section TAG_HTML_CLOSE comments_before_open_tag
+
+    8 html_section_start: TAG_HTML payload
+    9                   | comments_before_open_tag TAG_HTML payload
+
+   10 head_section: head_section_start head_section_content title_section head_section_content TAG_HEAD_CLOSE
+
+   11 head_section_start: TAG_HEAD payload
+   12                   | comments_before_open_tag TAG_HEAD payload
+
+   13 head_section_content: ε
+   14                     | head_section_content GENERAL_TAG payload head_section_content GENERAL_TAG_CLOSE
+   15                     | head_section_content HEAD_SECTION_VOID_TAG payload
+   16                     | head_section_content TAG_STYLE payload TAG_STYLE_CLOSE
+   17                     | head_section_content TAG_SCRIPT payload TAG_SCRIPT_CLOSE
+   18                     | head_section_content TAG_COMMENT_START TAG_COMMENT_END
+
+   19 title_section: TAG_TITLE payload TITLE_TEXT TAG_TITLE_CLOSE
+
+   20 body_section: body_section_start body_section_content TAG_BODY_CLOSE
+
+   21 body_section_start: TAG_BODY payload
+   22                   | comments_before_open_tag TAG_BODY payload
+
+   23 body_section_content: ε
+   24                     | body_section_content COMMON_TAG payload body_section_content COMMON_TAG_CLOSE
+   25                     | body_section_content GENERAL_TAG payload body_section_content GENERAL_TAG_CLOSE
+   26                     | body_section_content COMMON_VOID_TAG payload
+   27                     | body_section_content TAG_SCRIPT payload TAG_SCRIPT_CLOSE
+   28                     | body_section_content TAG_COMMENT_START TAG_COMMENT_END
+
+   29 payload: CLOSING_MORE_SIGN
+   30        | atr_sequence CLOSING_MORE_SIGN
+
+   31 atr_sequence: ATTRIBUTE VALUE
+   32             | atr_sequence ATTRIBUTE VALUE
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256) 3
+    CLOSING_MORE_SIGN (258) 29 30
+    TAG_DOCKTYPE (259) 1 2
+    TAG_COMMENT_START (260) 4 5 18 28
+    TAG_COMMENT_END (261) 4 5 18 28
+    TAG_HTML (262) 8 9
+    TAG_HTML_CLOSE (263) 6 7
+    TAG_HEAD (264) 11 12
+    TAG_HEAD_CLOSE (265) 10
+    GENERAL_TAG (266) 14 25
+    GENERAL_TAG_CLOSE (267) 14 25
+    HEAD_SECTION_VOID_TAG (268) 15
+    TAG_BODY (269) 21 22
+    TAG_BODY_CLOSE (270) 20
+    COMMON_TAG (271) 24
+    COMMON_TAG_CLOSE (272) 24
+    COMMON_VOID_TAG (273) 26
+    TAG_TITLE (274) 19
+    TAG_TITLE_CLOSE (275) 19
+    TITLE_TEXT (276) 19
+    TAG_STYLE (277) 16
+    TAG_STYLE_CLOSE (278) 16
+    TAG_SCRIPT (279) 17 27
+    TAG_SCRIPT_CLOSE (280) 17 27
+    ATTRIBUTE (281) 31 32
+    VALUE (282) 31 32
+
+
+Nonterminals, with rules where they appear
+
+    $accept (28)
+        on left: 0
+    html_doc (29)
+        on left: 1 2 3
+        on right: 0
+    comments_before_open_tag (30)
+        on left: 4 5
+        on right: 2 5 7 9 12 22
+    html_section (31)
+        on left: 6 7
+        on right: 1 2
+    html_section_start (32)
+        on left: 8 9
+        on right: 6 7
+    head_section (33)
+        on left: 10
+        on right: 6 7
+    head_section_start (34)
+        on left: 11 12
+        on right: 10
+    head_section_content (35)
+        on left: 13 14 15 16 17 18
+        on right: 10 14 15 16 17 18
+    title_section (36)
+        on left: 19
+        on right: 10
+    body_section (37)
+        on left: 20
+        on right: 6 7
+    body_section_start (38)
+        on left: 21 22
+        on right: 20
+    body_section_content (39)
+        on left: 23 24 25 26 27 28
+        on right: 20 24 25 26 27 28
+    payload (40)
+        on left: 29 30
+        on right: 8 9 11 12 14 15 16 17 19 21 22 24 25 26 27
+    atr_sequence (41)
+        on left: 31 32
+        on right: 30 32
+
+
+State 0
+
+    0 $accept: • html_doc $end
+
+    error              shift, and go to state 1
+    TAG_DOCKTYPE       shift, and go to state 2
+    TAG_COMMENT_START  shift, and go to state 3
+
+    html_doc                  go to state 4
+    comments_before_open_tag  go to state 5
+
+
+State 1
+
+    3 html_doc: error •
+
+    $default  reduce using rule 3 (html_doc)
+
+
+State 2
+
+    1 html_doc: TAG_DOCKTYPE • html_section
+
+    TAG_COMMENT_START  shift, and go to state 3
+    TAG_HTML           shift, and go to state 6
+
+    comments_before_open_tag  go to state 7
+    html_section              go to state 8
+    html_section_start        go to state 9
+
+
+State 3
+
+    4 comments_before_open_tag: TAG_COMMENT_START • TAG_COMMENT_END
+
+    TAG_COMMENT_END  shift, and go to state 10
+
+
+State 4
+
+    0 $accept: html_doc • $end
+
+    $end  shift, and go to state 11
+
+
+State 5
+
+    2 html_doc: comments_before_open_tag • TAG_DOCKTYPE html_section
+    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
+
+    TAG_DOCKTYPE       shift, and go to state 12
+    TAG_COMMENT_START  shift, and go to state 13
+
+
+State 6
+
+    8 html_section_start: TAG_HTML • payload
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 16
+    atr_sequence  go to state 17
+
+
+State 7
+
+    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
+    9 html_section_start: comments_before_open_tag • TAG_HTML payload
+
+    TAG_COMMENT_START  shift, and go to state 13
+    TAG_HTML           shift, and go to state 18
+
+
+State 8
+
+    1 html_doc: TAG_DOCKTYPE html_section •
+
+    $default  reduce using rule 1 (html_doc)
+
+
+State 9
+
+    6 html_section: html_section_start • head_section body_section TAG_HTML_CLOSE
+    7             | html_section_start • head_section body_section TAG_HTML_CLOSE comments_before_open_tag
+
+    TAG_COMMENT_START  shift, and go to state 3
+    TAG_HEAD           shift, and go to state 19
+
+    comments_before_open_tag  go to state 20
+    head_section              go to state 21
+    head_section_start        go to state 22
+
+
+State 10
+
+    4 comments_before_open_tag: TAG_COMMENT_START TAG_COMMENT_END •
+
+    $default  reduce using rule 4 (comments_before_open_tag)
+
+
+State 11
+
+    0 $accept: html_doc $end •
+
+    $default  accept
+
+
+State 12
+
+    2 html_doc: comments_before_open_tag TAG_DOCKTYPE • html_section
+
+    TAG_COMMENT_START  shift, and go to state 3
+    TAG_HTML           shift, and go to state 6
+
+    comments_before_open_tag  go to state 7
+    html_section              go to state 23
+    html_section_start        go to state 9
+
+
+State 13
+
+    5 comments_before_open_tag: comments_before_open_tag TAG_COMMENT_START • TAG_COMMENT_END
+
+    TAG_COMMENT_END  shift, and go to state 24
+
+
+State 14
+
+   29 payload: CLOSING_MORE_SIGN •
+
+    $default  reduce using rule 29 (payload)
+
+
+State 15
+
+   31 atr_sequence: ATTRIBUTE • VALUE
+
+    VALUE  shift, and go to state 25
+
+
+State 16
+
+    8 html_section_start: TAG_HTML payload •
+
+    $default  reduce using rule 8 (html_section_start)
+
+
+State 17
+
+   30 payload: atr_sequence • CLOSING_MORE_SIGN
+   32 atr_sequence: atr_sequence • ATTRIBUTE VALUE
+
+    CLOSING_MORE_SIGN  shift, and go to state 26
+    ATTRIBUTE          shift, and go to state 27
+
+
+State 18
+
+    9 html_section_start: comments_before_open_tag TAG_HTML • payload
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 28
+    atr_sequence  go to state 17
+
+
+State 19
+
+   11 head_section_start: TAG_HEAD • payload
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 29
+    atr_sequence  go to state 17
+
+
+State 20
+
+    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
+   12 head_section_start: comments_before_open_tag • TAG_HEAD payload
+
+    TAG_COMMENT_START  shift, and go to state 13
+    TAG_HEAD           shift, and go to state 30
+
+
+State 21
+
+    6 html_section: html_section_start head_section • body_section TAG_HTML_CLOSE
+    7             | html_section_start head_section • body_section TAG_HTML_CLOSE comments_before_open_tag
+
+    TAG_COMMENT_START  shift, and go to state 3
+    TAG_BODY           shift, and go to state 31
+
+    comments_before_open_tag  go to state 32
+    body_section              go to state 33
+    body_section_start        go to state 34
+
+
+State 22
+
+   10 head_section: head_section_start • head_section_content title_section head_section_content TAG_HEAD_CLOSE
+
+    $default  reduce using rule 13 (head_section_content)
+
+    head_section_content  go to state 35
+
+
+State 23
+
+    2 html_doc: comments_before_open_tag TAG_DOCKTYPE html_section •
+
+    $default  reduce using rule 2 (html_doc)
+
+
+State 24
+
+    5 comments_before_open_tag: comments_before_open_tag TAG_COMMENT_START TAG_COMMENT_END •
+
+    $default  reduce using rule 5 (comments_before_open_tag)
+
+
+State 25
+
+   31 atr_sequence: ATTRIBUTE VALUE •
+
+    $default  reduce using rule 31 (atr_sequence)
+
+
+State 26
+
+   30 payload: atr_sequence CLOSING_MORE_SIGN •
+
+    $default  reduce using rule 30 (payload)
+
+
+State 27
+
+   32 atr_sequence: atr_sequence ATTRIBUTE • VALUE
+
+    VALUE  shift, and go to state 36
+
+
+State 28
+
+    9 html_section_start: comments_before_open_tag TAG_HTML payload •
+
+    $default  reduce using rule 9 (html_section_start)
+
+
+State 29
+
+   11 head_section_start: TAG_HEAD payload •
+
+    $default  reduce using rule 11 (head_section_start)
+
+
+State 30
+
+   12 head_section_start: comments_before_open_tag TAG_HEAD • payload
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 37
+    atr_sequence  go to state 17
+
+
+State 31
+
+   21 body_section_start: TAG_BODY • payload
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 38
+    atr_sequence  go to state 17
+
+
+State 32
+
+    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
+   22 body_section_start: comments_before_open_tag • TAG_BODY payload
+
+    TAG_COMMENT_START  shift, and go to state 13
+    TAG_BODY           shift, and go to state 39
+
+
+State 33
+
+    6 html_section: html_section_start head_section body_section • TAG_HTML_CLOSE
+    7             | html_section_start head_section body_section • TAG_HTML_CLOSE comments_before_open_tag
+
+    TAG_HTML_CLOSE  shift, and go to state 40
+
+
+State 34
+
+   20 body_section: body_section_start • body_section_content TAG_BODY_CLOSE
+
+    $default  reduce using rule 23 (body_section_content)
+
+    body_section_content  go to state 41
+
+
+State 35
+
+   10 head_section: head_section_start head_section_content • title_section head_section_content TAG_HEAD_CLOSE
+   14 head_section_content: head_section_content • GENERAL_TAG payload head_section_content GENERAL_TAG_CLOSE
+   15                     | head_section_content • HEAD_SECTION_VOID_TAG payload
+   16                     | head_section_content • TAG_STYLE payload TAG_STYLE_CLOSE
+   17                     | head_section_content • TAG_SCRIPT payload TAG_SCRIPT_CLOSE
+   18                     | head_section_content • TAG_COMMENT_START TAG_COMMENT_END
+
+    TAG_COMMENT_START      shift, and go to state 42
+    GENERAL_TAG            shift, and go to state 43
+    HEAD_SECTION_VOID_TAG  shift, and go to state 44
+    TAG_TITLE              shift, and go to state 45
+    TAG_STYLE              shift, and go to state 46
+    TAG_SCRIPT             shift, and go to state 47
+
+    title_section  go to state 48
+
+
+State 36
+
+   32 atr_sequence: atr_sequence ATTRIBUTE VALUE •
+
+    $default  reduce using rule 32 (atr_sequence)
+
+
+State 37
+
+   12 head_section_start: comments_before_open_tag TAG_HEAD payload •
+
+    $default  reduce using rule 12 (head_section_start)
+
+
+State 38
+
+   21 body_section_start: TAG_BODY payload •
+
+    $default  reduce using rule 21 (body_section_start)
+
+
+State 39
+
+   22 body_section_start: comments_before_open_tag TAG_BODY • payload
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 49
+    atr_sequence  go to state 17
+
+
+State 40
+
+    6 html_section: html_section_start head_section body_section TAG_HTML_CLOSE •
+    7             | html_section_start head_section body_section TAG_HTML_CLOSE • comments_before_open_tag
+
+    TAG_COMMENT_START  shift, and go to state 3
+
+    $default  reduce using rule 6 (html_section)
+
+    comments_before_open_tag  go to state 50
+
+
+State 41
+
+   20 body_section: body_section_start body_section_content • TAG_BODY_CLOSE
+   24 body_section_content: body_section_content • COMMON_TAG payload body_section_content COMMON_TAG_CLOSE
+   25                     | body_section_content • GENERAL_TAG payload body_section_content GENERAL_TAG_CLOSE
+   26                     | body_section_content • COMMON_VOID_TAG payload
+   27                     | body_section_content • TAG_SCRIPT payload TAG_SCRIPT_CLOSE
+   28                     | body_section_content • TAG_COMMENT_START TAG_COMMENT_END
+
+    TAG_COMMENT_START  shift, and go to state 51
+    GENERAL_TAG        shift, and go to state 52
+    TAG_BODY_CLOSE     shift, and go to state 53
+    COMMON_TAG         shift, and go to state 54
+    COMMON_VOID_TAG    shift, and go to state 55
+    TAG_SCRIPT         shift, and go to state 56
+
+
+State 42
+
+   18 head_section_content: head_section_content TAG_COMMENT_START • TAG_COMMENT_END
+
+    TAG_COMMENT_END  shift, and go to state 57
+
+
+State 43
+
+   14 head_section_content: head_section_content GENERAL_TAG • payload head_section_content GENERAL_TAG_CLOSE
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 58
+    atr_sequence  go to state 17
+
+
+State 44
+
+   15 head_section_content: head_section_content HEAD_SECTION_VOID_TAG • payload
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 59
+    atr_sequence  go to state 17
+
+
+State 45
+
+   19 title_section: TAG_TITLE • payload TITLE_TEXT TAG_TITLE_CLOSE
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 60
+    atr_sequence  go to state 17
+
+
+State 46
+
+   16 head_section_content: head_section_content TAG_STYLE • payload TAG_STYLE_CLOSE
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 61
+    atr_sequence  go to state 17
+
+
+State 47
+
+   17 head_section_content: head_section_content TAG_SCRIPT • payload TAG_SCRIPT_CLOSE
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 62
+    atr_sequence  go to state 17
+
+
+State 48
+
+   10 head_section: head_section_start head_section_content title_section • head_section_content TAG_HEAD_CLOSE
+
+    $default  reduce using rule 13 (head_section_content)
+
+    head_section_content  go to state 63
+
+
+State 49
+
+   22 body_section_start: comments_before_open_tag TAG_BODY payload •
+
+    $default  reduce using rule 22 (body_section_start)
+
+
+State 50
+
+    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
+    7 html_section: html_section_start head_section body_section TAG_HTML_CLOSE comments_before_open_tag •
+
+    TAG_COMMENT_START  shift, and go to state 13
+
+    $default  reduce using rule 7 (html_section)
+
+
+State 51
+
+   28 body_section_content: body_section_content TAG_COMMENT_START • TAG_COMMENT_END
+
+    TAG_COMMENT_END  shift, and go to state 64
+
+
+State 52
+
+   25 body_section_content: body_section_content GENERAL_TAG • payload body_section_content GENERAL_TAG_CLOSE
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 65
+    atr_sequence  go to state 17
+
+
+State 53
+
+   20 body_section: body_section_start body_section_content TAG_BODY_CLOSE •
+
+    $default  reduce using rule 20 (body_section)
+
+
+State 54
+
+   24 body_section_content: body_section_content COMMON_TAG • payload body_section_content COMMON_TAG_CLOSE
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 66
+    atr_sequence  go to state 17
+
+
+State 55
+
+   26 body_section_content: body_section_content COMMON_VOID_TAG • payload
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 67
+    atr_sequence  go to state 17
+
+
+State 56
+
+   27 body_section_content: body_section_content TAG_SCRIPT • payload TAG_SCRIPT_CLOSE
+
+    CLOSING_MORE_SIGN  shift, and go to state 14
+    ATTRIBUTE          shift, and go to state 15
+
+    payload       go to state 68
+    atr_sequence  go to state 17
+
+
+State 57
+
+   18 head_section_content: head_section_content TAG_COMMENT_START TAG_COMMENT_END •
+
+    $default  reduce using rule 18 (head_section_content)
+
+
+State 58
+
+   14 head_section_content: head_section_content GENERAL_TAG payload • head_section_content GENERAL_TAG_CLOSE
+
+    $default  reduce using rule 13 (head_section_content)
+
+    head_section_content  go to state 69
+
+
+State 59
+
+   15 head_section_content: head_section_content HEAD_SECTION_VOID_TAG payload •
+
+    $default  reduce using rule 15 (head_section_content)
+
+
+State 60
+
+   19 title_section: TAG_TITLE payload • TITLE_TEXT TAG_TITLE_CLOSE
+
+    TITLE_TEXT  shift, and go to state 70
+
+
+State 61
+
+   16 head_section_content: head_section_content TAG_STYLE payload • TAG_STYLE_CLOSE
+
+    TAG_STYLE_CLOSE  shift, and go to state 71
+
+
+State 62
+
+   17 head_section_content: head_section_content TAG_SCRIPT payload • TAG_SCRIPT_CLOSE
+
+    TAG_SCRIPT_CLOSE  shift, and go to state 72
+
+
+State 63
+
+   10 head_section: head_section_start head_section_content title_section head_section_content • TAG_HEAD_CLOSE
+   14 head_section_content: head_section_content • GENERAL_TAG payload head_section_content GENERAL_TAG_CLOSE
+   15                     | head_section_content • HEAD_SECTION_VOID_TAG payload
+   16                     | head_section_content • TAG_STYLE payload TAG_STYLE_CLOSE
+   17                     | head_section_content • TAG_SCRIPT payload TAG_SCRIPT_CLOSE
+   18                     | head_section_content • TAG_COMMENT_START TAG_COMMENT_END
+
+    TAG_COMMENT_START      shift, and go to state 42
+    TAG_HEAD_CLOSE         shift, and go to state 73
+    GENERAL_TAG            shift, and go to state 43
+    HEAD_SECTION_VOID_TAG  shift, and go to state 44
+    TAG_STYLE              shift, and go to state 46
+    TAG_SCRIPT             shift, and go to state 47
+
+
+State 64
+
+   28 body_section_content: body_section_content TAG_COMMENT_START TAG_COMMENT_END •
+
+    $default  reduce using rule 28 (body_section_content)
+
+
+State 65
+
+   25 body_section_content: body_section_content GENERAL_TAG payload • body_section_content GENERAL_TAG_CLOSE
+
+    $default  reduce using rule 23 (body_section_content)
+
+    body_section_content  go to state 74
+
+
+State 66
+
+   24 body_section_content: body_section_content COMMON_TAG payload • body_section_content COMMON_TAG_CLOSE
+
+    $default  reduce using rule 23 (body_section_content)
+
+    body_section_content  go to state 75
+
+
+State 67
+
+   26 body_section_content: body_section_content COMMON_VOID_TAG payload •
+
+    $default  reduce using rule 26 (body_section_content)
+
+
+State 68
+
+   27 body_section_content: body_section_content TAG_SCRIPT payload • TAG_SCRIPT_CLOSE
+
+    TAG_SCRIPT_CLOSE  shift, and go to state 76
+
+
+State 69
+
+   14 head_section_content: head_section_content • GENERAL_TAG payload head_section_content GENERAL_TAG_CLOSE
+   14                     | head_section_content GENERAL_TAG payload head_section_content • GENERAL_TAG_CLOSE
+   15                     | head_section_content • HEAD_SECTION_VOID_TAG payload
+   16                     | head_section_content • TAG_STYLE payload TAG_STYLE_CLOSE
+   17                     | head_section_content • TAG_SCRIPT payload TAG_SCRIPT_CLOSE
+   18                     | head_section_content • TAG_COMMENT_START TAG_COMMENT_END
+
+    TAG_COMMENT_START      shift, and go to state 42
+    GENERAL_TAG            shift, and go to state 43
+    GENERAL_TAG_CLOSE      shift, and go to state 77
+    HEAD_SECTION_VOID_TAG  shift, and go to state 44
+    TAG_STYLE              shift, and go to state 46
+    TAG_SCRIPT             shift, and go to state 47
+
+
+State 70
+
+   19 title_section: TAG_TITLE payload TITLE_TEXT • TAG_TITLE_CLOSE
+
+    TAG_TITLE_CLOSE  shift, and go to state 78
+
+
+State 71
+
+   16 head_section_content: head_section_content TAG_STYLE payload TAG_STYLE_CLOSE •
+
+    $default  reduce using rule 16 (head_section_content)
+
+
+State 72
+
+   17 head_section_content: head_section_content TAG_SCRIPT payload TAG_SCRIPT_CLOSE •
+
+    $default  reduce using rule 17 (head_section_content)
+
+
+State 73
+
+   10 head_section: head_section_start head_section_content title_section head_section_content TAG_HEAD_CLOSE •
+
+    $default  reduce using rule 10 (head_section)
+
+
+State 74
+
+   24 body_section_content: body_section_content • COMMON_TAG payload body_section_content COMMON_TAG_CLOSE
+   25                     | body_section_content • GENERAL_TAG payload body_section_content GENERAL_TAG_CLOSE
+   25                     | body_section_content GENERAL_TAG payload body_section_content • GENERAL_TAG_CLOSE
+   26                     | body_section_content • COMMON_VOID_TAG payload
+   27                     | body_section_content • TAG_SCRIPT payload TAG_SCRIPT_CLOSE
+   28                     | body_section_content • TAG_COMMENT_START TAG_COMMENT_END
+
+    TAG_COMMENT_START  shift, and go to state 51
+    GENERAL_TAG        shift, and go to state 52
+    GENERAL_TAG_CLOSE  shift, and go to state 79
+    COMMON_TAG         shift, and go to state 54
+    COMMON_VOID_TAG    shift, and go to state 55
+    TAG_SCRIPT         shift, and go to state 56
+
+
+State 75
+
+   24 body_section_content: body_section_content • COMMON_TAG payload body_section_content COMMON_TAG_CLOSE
+   24                     | body_section_content COMMON_TAG payload body_section_content • COMMON_TAG_CLOSE
+   25                     | body_section_content • GENERAL_TAG payload body_section_content GENERAL_TAG_CLOSE
+   26                     | body_section_content • COMMON_VOID_TAG payload
+   27                     | body_section_content • TAG_SCRIPT payload TAG_SCRIPT_CLOSE
+   28                     | body_section_content • TAG_COMMENT_START TAG_COMMENT_END
+
+    TAG_COMMENT_START  shift, and go to state 51
+    GENERAL_TAG        shift, and go to state 52
+    COMMON_TAG         shift, and go to state 54
+    COMMON_TAG_CLOSE   shift, and go to state 80
+    COMMON_VOID_TAG    shift, and go to state 55
+    TAG_SCRIPT         shift, and go to state 56
+
+
+State 76
+
+   27 body_section_content: body_section_content TAG_SCRIPT payload TAG_SCRIPT_CLOSE •
+
+    $default  reduce using rule 27 (body_section_content)
+
+
+State 77
+
+   14 head_section_content: head_section_content GENERAL_TAG payload head_section_content GENERAL_TAG_CLOSE •
+
+    $default  reduce using rule 14 (head_section_content)
+
+
+State 78
+
+   19 title_section: TAG_TITLE payload TITLE_TEXT TAG_TITLE_CLOSE •
+
+    $default  reduce using rule 19 (title_section)
+
+
+State 79
+
+   25 body_section_content: body_section_content GENERAL_TAG payload body_section_content GENERAL_TAG_CLOSE •
+
+    $default  reduce using rule 25 (body_section_content)
+
+
+State 80
+
+   24 body_section_content: body_section_content COMMON_TAG payload body_section_content COMMON_TAG_CLOSE •
+
+    $default  reduce using rule 24 (body_section_content)
