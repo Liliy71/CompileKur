@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body style="background-color:powderblue;">
+
+<p>Я нормальный</p>
+<p style="color:red;">Я красный</p>
+<p style="color:blue;">Я синий</p>
+<p style="font-size:50px;">Я большой</p>
+
+<h1 style="background-color:powderblue;">Это заголовок</h1>
+<p style="background-color:tomato;">Это параграф.</p>
+
+<h1 style="color:blue;">Это заголовок</h1>
+
+<p style="color:red;">Это параграф.</p>
+
+<h1 style="font-family:verdana;">Это заголовок</h1>
+
+<p style="font-family:courier;">Это параграф.</p>
+
+<h1 style="font-size:300%;">Это заголовок</h1>
+<p style="font-size:160%;">Это параграф.</p>
+
+<h1 style="text-align:center;">Заголовок по центру</h1>
+<p style="text-align:center;">Параграф по центру.</p>
+
+</body>
+</html>
