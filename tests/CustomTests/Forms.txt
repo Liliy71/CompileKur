@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<h2>HTML формы</h2>
+
+<form action="/action_page.php">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname" value="Андрей"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname" value="Щипунов"><br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+<p>Если Вы нажмете на кнопку "Отправить", данные форма будут отправлены на страницу "/action_page.php".</p>
+
+<h2>Поля ввода текста</h2>
+
+<form>
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname" value="Андрей"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname" value="Щипунов">
+</form>
+
+<p>Обратите внимание, что сама форма не видна.</p>
+
+<p>Также обратите внимание, что ширина поля ввода текста 20 символов по умолчанию.</p>
+
+<h2>Кнопки radio</h2>
+
+<p>Выберите свой любимый веб-язык:</p>
+
+<form>
+  <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">HTML</label><br>
+  <input type="radio" id="css" name="fav_language" value="CSS">
+  <label for="css">CSS</label><br>
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <label for="javascript">JavaScript</label>
+</form> 
+
+<h2>HTML формы</h2>
+
+<form action="/action_page.php">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname" value="Андрей"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname" value="Щипунов"><br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+<p>Если Вы нажмете на кнопку "Отправить", данные форма будут отправлены на страницу "/action_page.php".</p>
+
+<h2>Атрибут target формы</h2>
+
+<p>При отправке этой формы результат откроется в новой вкладке браузера:</p>
+
+<form action="/action_page.php" target="_blank">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname" value="Андрей"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname" value="Щипунов"><br><br>
+  <input type="submit" value="Отправить">
+</form>
+
+<h2>Атрибут method</h2>
+
+<p>Эта форма будет отправлена с использованием метода GET:</p>
+
+<form action="/action_page.php" target="_blank" method="get">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname" value="Андрей"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname" value="Щипунов"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<p>После отправки обратите внимание, что значения формы отображаются в адресной строке новой вкладки браузера.</p>
+
+<h2>Атрибут method</h2>
+
+<p>Эта форма будет отправлена с использованием метода POST:</p>
+
+<form action="/action_page.php" target="_blank" method="post">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname" value="Андрей"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname" value="Щипунов"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<p>После отправки обратите внимание, что, в отличие от метода GET, значения формы не отображаются в адресной строке новой вкладки браузера.</p>
+
+<h2>Атрибут name</h2>
+
+<form action="/action_page.php">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" value="Андрей"><br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+<p>Если Вы нажмете кнопку "Отправить", данные формы будут отправлены на страницу с именем "/action_page.php".</p>
+
+<p>Обратите внимание, что значение поля "Имя" не будет отправлено, поскольку элемент ввода не имеет атрибута name.</p>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<h2>Элемент iframe</h2>
+<p>Элемент iframe используется для отображения веб-страницы в веб-страницы:</p>
+
+<iframe src="demo_iframe.htm"></iframe>
+
+<h2>Iframe — цель для ссылки</h2>
+
+<iframe src="demo_iframe.htm" name="iframe_a" height="300px" width="100%" title="Пример iframe"></iframe>
+
+<p><a href="https://www.schoolsw3.com" target="iframe_a">Schoolsw3.com</a></p>
+
+<p>Если атрибут ссылки target совпадает с именем iframe, ссылка откроется в iframe.</p>
+
+
+
+</body>
+</html>
