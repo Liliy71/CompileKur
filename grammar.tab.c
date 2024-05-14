@@ -131,9 +131,9 @@ enum yysymbol_kind_t
   YYSYMBOL_VALUE = 27,                     /* VALUE  */
   YYSYMBOL_YYACCEPT = 28,                  /* $accept  */
   YYSYMBOL_html_doc = 29,                  /* html_doc  */
-  YYSYMBOL_comments_before_open_tag = 30,  /* comments_before_open_tag  */
+  YYSYMBOL_comments = 30,                  /* comments  */
   YYSYMBOL_html_section = 31,              /* html_section  */
-  YYSYMBOL_html_section_start = 32,        /* html_section_start  */
+  YYSYMBOL_html_start = 32,                /* html_start  */
   YYSYMBOL_head_section = 33,              /* head_section  */
   YYSYMBOL_head_section_start = 34,        /* head_section_start  */
   YYSYMBOL_head_section_content = 35,      /* head_section_content  */
@@ -557,11 +557,10 @@ static const char *const yytname[] =
   "TAG_BODY_CLOSE", "COMMON_TAG", "COMMON_TAG_CLOSE", "COMMON_VOID_TAG",
   "TAG_TITLE", "TAG_TITLE_CLOSE", "TITLE_TEXT", "TAG_STYLE",
   "TAG_STYLE_CLOSE", "TAG_SCRIPT", "TAG_SCRIPT_CLOSE", "ATTRIBUTE",
-  "VALUE", "$accept", "html_doc", "comments_before_open_tag",
-  "html_section", "html_section_start", "head_section",
-  "head_section_start", "head_section_content", "title_section",
-  "body_section", "body_section_start", "body_section_content", "payload",
-  "atr_sequence", YY_NULLPTR
+  "VALUE", "$accept", "html_doc", "comments", "html_section", "html_start",
+  "head_section", "head_section_start", "head_section_content",
+  "title_section", "body_section", "body_section_start",
+  "body_section_content", "payload", "atr_sequence", YY_NULLPTR
 };
 
 static const char *
@@ -1153,11 +1152,11 @@ yyreduce:
   case 4: /* html_doc: error  */
 #line 19 "grammar.y"
                         { yyerrok; printf("in line %d.\n", line); exit(-1);}
-#line 1157 "grammar.tab.c"
+#line 1156 "grammar.tab.c"
     break;
 
 
-#line 1161 "grammar.tab.c"
+#line 1160 "grammar.tab.c"
 
       default: break;
     }

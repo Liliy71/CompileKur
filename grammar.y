@@ -15,22 +15,22 @@
 %token ATTRIBUTE VALUE
 %%
 html_doc: TAG_DOCKTYPE html_section
-		| comments_before_open_tag TAG_DOCKTYPE html_section
+		| comments TAG_DOCKTYPE html_section
 		| error { yyerrok; printf("in line %d.\n", line); exit(-1);}
 
-comments_before_open_tag: TAG_COMMENT_START TAG_COMMENT_END
-						| comments_before_open_tag TAG_COMMENT_START TAG_COMMENT_END
+comments: TAG_COMMENT_START TAG_COMMENT_END
+			| comments TAG_COMMENT_START TAG_COMMENT_END
 
-html_section: html_section_start head_section body_section TAG_HTML_CLOSE
-			| html_section_start head_section body_section TAG_HTML_CLOSE comments_before_open_tag
+html_section: html_start head_section body_section TAG_HTML_CLOSE
+			| html_start head_section body_section TAG_HTML_CLOSE comments
 
-html_section_start: TAG_HTML payload
-				  | comments_before_open_tag TAG_HTML payload
+html_start: TAG_HTML payload
+			| comments TAG_HTML payload
 
 head_section: head_section_start head_section_content title_section head_section_content TAG_HEAD_CLOSE
 
 head_section_start: TAG_HEAD payload
-				  | comments_before_open_tag TAG_HEAD payload
+				  | comments TAG_HEAD payload
 
 head_section_content: 
 	   | head_section_content GENERAL_TAG payload head_section_content GENERAL_TAG_CLOSE
@@ -44,7 +44,7 @@ title_section: TAG_TITLE payload TITLE_TEXT TAG_TITLE_CLOSE
 body_section: body_section_start body_section_content TAG_BODY_CLOSE
 
 body_section_start: TAG_BODY payload
-				  | comments_before_open_tag TAG_BODY payload
+				  | comments TAG_BODY payload
 
 body_section_content:
 	   | body_section_content COMMON_TAG payload body_section_content COMMON_TAG_CLOSE

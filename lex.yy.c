@@ -7970,8 +7970,9 @@ void StackPrint() {
 }
 void StackDeinit() {
 	if(!StackIsEmpty()){
-		printf("ERROR: No closing tag was found for: %s>\nThe following closing tags were not found due to program termination:\nbody, line: %d; ", StackTop(), line_body);
+		printf("The following closing tags were not found due to program termination:\nbody, line: %d; ", line_body);
 		StackPrint();
+		printf("\n");
 	}
 	while (!StackIsEmpty()) StackPop();
 }

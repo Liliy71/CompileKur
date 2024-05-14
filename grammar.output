@@ -3,22 +3,22 @@ Grammar
     0 $accept: html_doc $end
 
     1 html_doc: TAG_DOCKTYPE html_section
-    2         | comments_before_open_tag TAG_DOCKTYPE html_section
+    2         | comments TAG_DOCKTYPE html_section
     3         | error
 
-    4 comments_before_open_tag: TAG_COMMENT_START TAG_COMMENT_END
-    5                         | comments_before_open_tag TAG_COMMENT_START TAG_COMMENT_END
+    4 comments: TAG_COMMENT_START TAG_COMMENT_END
+    5         | comments TAG_COMMENT_START TAG_COMMENT_END
 
-    6 html_section: html_section_start head_section body_section TAG_HTML_CLOSE
-    7             | html_section_start head_section body_section TAG_HTML_CLOSE comments_before_open_tag
+    6 html_section: html_start head_section body_section TAG_HTML_CLOSE
+    7             | html_start head_section body_section TAG_HTML_CLOSE comments
 
-    8 html_section_start: TAG_HTML payload
-    9                   | comments_before_open_tag TAG_HTML payload
+    8 html_start: TAG_HTML payload
+    9           | comments TAG_HTML payload
 
    10 head_section: head_section_start head_section_content title_section head_section_content TAG_HEAD_CLOSE
 
    11 head_section_start: TAG_HEAD payload
-   12                   | comments_before_open_tag TAG_HEAD payload
+   12                   | comments TAG_HEAD payload
 
    13 head_section_content: ε
    14                     | head_section_content GENERAL_TAG payload head_section_content GENERAL_TAG_CLOSE
@@ -32,7 +32,7 @@ Grammar
    20 body_section: body_section_start body_section_content TAG_BODY_CLOSE
 
    21 body_section_start: TAG_BODY payload
-   22                   | comments_before_open_tag TAG_BODY payload
+   22                   | comments TAG_BODY payload
 
    23 body_section_content: ε
    24                     | body_section_content COMMON_TAG payload body_section_content COMMON_TAG_CLOSE
@@ -86,13 +86,13 @@ Nonterminals, with rules where they appear
     html_doc (29)
         on left: 1 2 3
         on right: 0
-    comments_before_open_tag (30)
+    comments (30)
         on left: 4 5
         on right: 2 5 7 9 12 22
     html_section (31)
         on left: 6 7
         on right: 1 2
-    html_section_start (32)
+    html_start (32)
         on left: 8 9
         on right: 6 7
     head_section (33)
@@ -132,8 +132,8 @@ State 0
     TAG_DOCKTYPE       shift, and go to state 2
     TAG_COMMENT_START  shift, and go to state 3
 
-    html_doc                  go to state 4
-    comments_before_open_tag  go to state 5
+    html_doc  go to state 4
+    comments  go to state 5
 
 
 State 1
@@ -150,14 +150,14 @@ State 2
     TAG_COMMENT_START  shift, and go to state 3
     TAG_HTML           shift, and go to state 6
 
-    comments_before_open_tag  go to state 7
-    html_section              go to state 8
-    html_section_start        go to state 9
+    comments      go to state 7
+    html_section  go to state 8
+    html_start    go to state 9
 
 
 State 3
 
-    4 comments_before_open_tag: TAG_COMMENT_START • TAG_COMMENT_END
+    4 comments: TAG_COMMENT_START • TAG_COMMENT_END
 
     TAG_COMMENT_END  shift, and go to state 10
 
@@ -171,8 +171,8 @@ State 4
 
 State 5
 
-    2 html_doc: comments_before_open_tag • TAG_DOCKTYPE html_section
-    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
+    2 html_doc: comments • TAG_DOCKTYPE html_section
+    5 comments: comments • TAG_COMMENT_START TAG_COMMENT_END
 
     TAG_DOCKTYPE       shift, and go to state 12
     TAG_COMMENT_START  shift, and go to state 13
@@ -180,7 +180,7 @@ State 5
 
 State 6
 
-    8 html_section_start: TAG_HTML • payload
+    8 html_start: TAG_HTML • payload
 
     CLOSING_MORE_SIGN  shift, and go to state 14
     ATTRIBUTE          shift, and go to state 15
@@ -191,8 +191,8 @@ State 6
 
 State 7
 
-    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
-    9 html_section_start: comments_before_open_tag • TAG_HTML payload
+    5 comments: comments • TAG_COMMENT_START TAG_COMMENT_END
+    9 html_start: comments • TAG_HTML payload
 
     TAG_COMMENT_START  shift, and go to state 13
     TAG_HTML           shift, and go to state 18
@@ -207,22 +207,22 @@ State 8
 
 State 9
 
-    6 html_section: html_section_start • head_section body_section TAG_HTML_CLOSE
-    7             | html_section_start • head_section body_section TAG_HTML_CLOSE comments_before_open_tag
+    6 html_section: html_start • head_section body_section TAG_HTML_CLOSE
+    7             | html_start • head_section body_section TAG_HTML_CLOSE comments
 
     TAG_COMMENT_START  shift, and go to state 3
     TAG_HEAD           shift, and go to state 19
 
-    comments_before_open_tag  go to state 20
-    head_section              go to state 21
-    head_section_start        go to state 22
+    comments            go to state 20
+    head_section        go to state 21
+    head_section_start  go to state 22
 
 
 State 10
 
-    4 comments_before_open_tag: TAG_COMMENT_START TAG_COMMENT_END •
+    4 comments: TAG_COMMENT_START TAG_COMMENT_END •
 
-    $default  reduce using rule 4 (comments_before_open_tag)
+    $default  reduce using rule 4 (comments)
 
 
 State 11
@@ -234,19 +234,19 @@ State 11
 
 State 12
 
-    2 html_doc: comments_before_open_tag TAG_DOCKTYPE • html_section
+    2 html_doc: comments TAG_DOCKTYPE • html_section
 
     TAG_COMMENT_START  shift, and go to state 3
     TAG_HTML           shift, and go to state 6
 
-    comments_before_open_tag  go to state 7
-    html_section              go to state 23
-    html_section_start        go to state 9
+    comments      go to state 7
+    html_section  go to state 23
+    html_start    go to state 9
 
 
 State 13
 
-    5 comments_before_open_tag: comments_before_open_tag TAG_COMMENT_START • TAG_COMMENT_END
+    5 comments: comments TAG_COMMENT_START • TAG_COMMENT_END
 
     TAG_COMMENT_END  shift, and go to state 24
 
@@ -267,9 +267,9 @@ State 15
 
 State 16
 
-    8 html_section_start: TAG_HTML payload •
+    8 html_start: TAG_HTML payload •
 
-    $default  reduce using rule 8 (html_section_start)
+    $default  reduce using rule 8 (html_start)
 
 
 State 17
@@ -283,7 +283,7 @@ State 17
 
 State 18
 
-    9 html_section_start: comments_before_open_tag TAG_HTML • payload
+    9 html_start: comments TAG_HTML • payload
 
     CLOSING_MORE_SIGN  shift, and go to state 14
     ATTRIBUTE          shift, and go to state 15
@@ -305,8 +305,8 @@ State 19
 
 State 20
 
-    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
-   12 head_section_start: comments_before_open_tag • TAG_HEAD payload
+    5 comments: comments • TAG_COMMENT_START TAG_COMMENT_END
+   12 head_section_start: comments • TAG_HEAD payload
 
     TAG_COMMENT_START  shift, and go to state 13
     TAG_HEAD           shift, and go to state 30
@@ -314,15 +314,15 @@ State 20
 
 State 21
 
-    6 html_section: html_section_start head_section • body_section TAG_HTML_CLOSE
-    7             | html_section_start head_section • body_section TAG_HTML_CLOSE comments_before_open_tag
+    6 html_section: html_start head_section • body_section TAG_HTML_CLOSE
+    7             | html_start head_section • body_section TAG_HTML_CLOSE comments
 
     TAG_COMMENT_START  shift, and go to state 3
     TAG_BODY           shift, and go to state 31
 
-    comments_before_open_tag  go to state 32
-    body_section              go to state 33
-    body_section_start        go to state 34
+    comments            go to state 32
+    body_section        go to state 33
+    body_section_start  go to state 34
 
 
 State 22
@@ -336,16 +336,16 @@ State 22
 
 State 23
 
-    2 html_doc: comments_before_open_tag TAG_DOCKTYPE html_section •
+    2 html_doc: comments TAG_DOCKTYPE html_section •
 
     $default  reduce using rule 2 (html_doc)
 
 
 State 24
 
-    5 comments_before_open_tag: comments_before_open_tag TAG_COMMENT_START TAG_COMMENT_END •
+    5 comments: comments TAG_COMMENT_START TAG_COMMENT_END •
 
-    $default  reduce using rule 5 (comments_before_open_tag)
+    $default  reduce using rule 5 (comments)
 
 
 State 25
@@ -371,9 +371,9 @@ State 27
 
 State 28
 
-    9 html_section_start: comments_before_open_tag TAG_HTML payload •
+    9 html_start: comments TAG_HTML payload •
 
-    $default  reduce using rule 9 (html_section_start)
+    $default  reduce using rule 9 (html_start)
 
 
 State 29
@@ -385,7 +385,7 @@ State 29
 
 State 30
 
-   12 head_section_start: comments_before_open_tag TAG_HEAD • payload
+   12 head_section_start: comments TAG_HEAD • payload
 
     CLOSING_MORE_SIGN  shift, and go to state 14
     ATTRIBUTE          shift, and go to state 15
@@ -407,8 +407,8 @@ State 31
 
 State 32
 
-    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
-   22 body_section_start: comments_before_open_tag • TAG_BODY payload
+    5 comments: comments • TAG_COMMENT_START TAG_COMMENT_END
+   22 body_section_start: comments • TAG_BODY payload
 
     TAG_COMMENT_START  shift, and go to state 13
     TAG_BODY           shift, and go to state 39
@@ -416,8 +416,8 @@ State 32
 
 State 33
 
-    6 html_section: html_section_start head_section body_section • TAG_HTML_CLOSE
-    7             | html_section_start head_section body_section • TAG_HTML_CLOSE comments_before_open_tag
+    6 html_section: html_start head_section body_section • TAG_HTML_CLOSE
+    7             | html_start head_section body_section • TAG_HTML_CLOSE comments
 
     TAG_HTML_CLOSE  shift, and go to state 40
 
@@ -459,7 +459,7 @@ State 36
 
 State 37
 
-   12 head_section_start: comments_before_open_tag TAG_HEAD payload •
+   12 head_section_start: comments TAG_HEAD payload •
 
     $default  reduce using rule 12 (head_section_start)
 
@@ -473,7 +473,7 @@ State 38
 
 State 39
 
-   22 body_section_start: comments_before_open_tag TAG_BODY • payload
+   22 body_section_start: comments TAG_BODY • payload
 
     CLOSING_MORE_SIGN  shift, and go to state 14
     ATTRIBUTE          shift, and go to state 15
@@ -484,14 +484,14 @@ State 39
 
 State 40
 
-    6 html_section: html_section_start head_section body_section TAG_HTML_CLOSE •
-    7             | html_section_start head_section body_section TAG_HTML_CLOSE • comments_before_open_tag
+    6 html_section: html_start head_section body_section TAG_HTML_CLOSE •
+    7             | html_start head_section body_section TAG_HTML_CLOSE • comments
 
     TAG_COMMENT_START  shift, and go to state 3
 
     $default  reduce using rule 6 (html_section)
 
-    comments_before_open_tag  go to state 50
+    comments  go to state 50
 
 
 State 41
@@ -584,15 +584,15 @@ State 48
 
 State 49
 
-   22 body_section_start: comments_before_open_tag TAG_BODY payload •
+   22 body_section_start: comments TAG_BODY payload •
 
     $default  reduce using rule 22 (body_section_start)
 
 
 State 50
 
-    5 comments_before_open_tag: comments_before_open_tag • TAG_COMMENT_START TAG_COMMENT_END
-    7 html_section: html_section_start head_section body_section TAG_HTML_CLOSE comments_before_open_tag •
+    5 comments: comments • TAG_COMMENT_START TAG_COMMENT_END
+    7 html_section: html_start head_section body_section TAG_HTML_CLOSE comments •
 
     TAG_COMMENT_START  shift, and go to state 13
 
