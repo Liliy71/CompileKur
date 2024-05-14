@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+</head>
+<body>
+
+<h2>Поле text</h2>
+<p><strong>input type="text"</strong> определяет однострочное поле ввода текста:</p>
+
+<form action="/action_page.php">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname"><br><br>
+  <input type="submit" value="Отправить">
+</form>
+
+<p>Обратите внимание, что сама форма не видна.</p>
+<p>Также обратите внимание, что ширина текстового поля по умолчанию составляет 20 символов.</p>
+
+<h2>Поле password</h2>
+
+<p><strong>input type="password"</strong> определяет поле пароля:</p>
+
+<form action="/action_page.php">
+  <label for="username">Имя пользователя:</label><br>
+  <input type="text" id="username" name="username"><br>
+  <label for="pwd">Пароль:</label><br>
+  <input type="password" id="pwd" name="pwd"><br><br>
+  <input type="submit" value="Отправить">
+</form>
+
+<p>Символы в поле пароля замаскированы (отображаются звездочками или кружками).</p>
+
+<h2>Кнопка submit</h2>
+
+<p><strong>input type="submit"</strong> определяет кнопку для отправки данных формы обработчику формы:</p>
+
+<form action="/action_page.php">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname" value="Андрей"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname" value="Щипунов"><br><br>
+  <input type="submit" value="Отправить">
+</form> 
+
+<p>Если вы нажмете "Отправить", данные формы будут отправлены на страницу с именем  "/action_page.php".</p>
+
+<form action="/action_page.php">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname" value="Андрей"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname" value="Щипунов"><br><br>
+  <input type="submit">
+</form> 
+
+<h2>Кнопка reset</h2>
+
+<p><strong>input type="reset"</strong> определяет кнопку сброса, которая сбрасывает все значения формы к значениям по умолчанию:</p>
+
+<form action="/action_page.php">
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname" value="Андрей"><br>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname" value="Щипунов"><br><br>
+  <input type="submit" value="Отправить">
+  <input type="reset" value="Сброс">
+</form> 
+
+<p>Если вы измените входные значения и затем нажмете кнопку "Сброс", данные формы будут сброшены до значений по умолчанию.</p></p>
+
+<h2>Кнопка radio</h2>
+
+<p><strong>input type="radio"</strong> определяет переключатель:</p>
+
+<p>Выберите любимый веб-язык:</p>
+
+<form action="/action_page.php">
+  <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">HTML</label><br>
+  <input type="radio" id="css" name="fav_language" value="CSS">
+  <label for="css">CSS</label><br>
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <label for="javascript">JavaScript</label><br><br>
+  <input type="submit" value="Отправить">
+</form> 
+
+<h2>Поле checkbox</h2>
+
+<p><strong>input type="checkbox"</strong> определяет флажок:</p>
+
+<form action="/action_page.php">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> У меня есть велосипед</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> У меня есть машина</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> У меня есть лодка</label>
+  <input type="submit" value="Отправить">
+</form>
+
+<h2>Поле button</h2>
+
+<input type="button" onclick="alert('Привет Мир!')" value="Нажмите Меня!">
+
+<h2>Поле color</h2>
+
+<p><strong>input type="color"</strong> используется для полей ввода, которые должны содержать цвет.</p>
+
+<form action="/action_page.php">
+  <label for="favcolor">Выберите свой любимый цвет:</label>
+  <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+  <input type="submit" value="Отправить">
+</form>
+
+<p><b>Примечание.</b> type="color" не поддерживается в Internet Explorer 11.</p>
+
+<h2>Поле date</h2>
+
+<p><strong>input type="date"</strong> используется для полей ввода, которые должны содержать дату.</p>
+
+<form action="/action_page.php">
+  <label for="birthday">День рождения:</label>
+  <input type="date" id="birthday" name="birthday">
+  <input type="submit" value="Отправить">
+</form>
+
+<p><strong>Примечание.</strong> type="date" не поддерживается в Internet Explorer 11.</p>
+
+<h2>Ограничения в поле date</h2>
+
+<p>Используйте атрибуты min и max, чтобы добавить ограничения к датам:</p>
+
+<form action="/action_page.php">
+  <label for="datemin">Введите дату до 2000-01-01:</label>
+  <input type="date" id="datemin" name="datemin" min="2000-01-02"><br><br>
+
+  <label for="datemax">Введите дату после 1980-01-01:</label>
+  <input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>
+  
+  <input type="submit" value="Отправить">
+</form>
+
+<p><strong>Примечание.</strong> type="date" не поддерживается в Internet Explorer 11.</p>
+
+<h2>Ограничения в поле date</h2>
+
+<p>Используйте атрибуты min и max, чтобы добавить ограничения к датам:</p>
+
+<form action="/action_page.php">
+  <label for="datemin">Введите дату после 2000-01-01:</label>
+  <input type="date" id="datemin" name="datemin" min="2000-01-02"><br><br>
+
+  <label for="datemax">Введите дату до 1980-01-01:</label>
+  <input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>
+  
+  <input type="submit" value="Отправить">
+</form>
+
+<p><strong>Примечание.</strong> type="date" не поддерживается в Internet Explorer 11.</p>
+
+<h2>Поле email</h2>
+
+<p><strong>input type="email"</strong> используется для полей ввода, которые должны содержать адрес электронной почты:</p>
+
+<form action="/action_page.php">
+  <label for="email">Введите свой адрес электронной почты:</label>
+  <input type="email" id="email" name="email">
+  <input type="submit" value="Отправить">
+</form>
+
+<h1>Поле file</h1>
+
+<p>Показать поле выбора файла, позволяющее выбрать файл для загрузки:</p>
+<form action="/action_page.php">
+  <label for="myfile">Выбрать файл:</label>
+  <input type="file" id="myfile" name="myfile"><br><br>
+  <input type="submit" value="Отправить">
+</form>
+
+<h2>Поле month</h2>
+
+<p><strong>input type="month"</strong> позволяет пользователю выбрать месяц и год.</p>
+
+<form action="/action_page.php">
+  <label for="bdaymonth">День рождения (месяц и год):</label>
+  <input type="month" id="bdaymonth" name="bdaymonth">
+  <input type="submit" value="Отправить">
+</form>
+
+<p><strong>Примечание.</strong> type="month" не поддерживается в Firefox, Safari и Internet Explorer 11.</p>
+
+<h2>Поле number</h2>
+
+<p><strong>input type="number"</strong> определяет числовое поле ввода.</p>
+
+<p>Вы можете использовать атрибуты min и max, чтобы добавить числовые ограничения в поле ввода:</p>
+
+<form action="/action_page.php">
+  <label for="quantity">>Количество (от 1 до 5):</label>
+  <input type="number" id="quantity" name="quantity" min="1" max="5">
+  <input type="submit" value="Отправить">
+</form>
+
+<h2>Поле number</h2>
+
+<p>В зависимости от поддержки браузера: в поле ввода будут применяться фиксированные шаги.</p>
+
+<form action="/action_page.php">
+  <label for="quantity">Количество:</label>
+  <input type="number" id="quantity" name="quantity" min="0" max="100" step="10" value="30">
+  <input type="submit" value="Отправить">
+</form>
+
+<h2>Поле диапазона</h2>
+
+<p>В зависимости от поддержки браузера: тип ввода "range" может отображаться в виде ползунка.</p>
+
+<form action="/action_page.php" method="get">
+  <label for="vol">Громкость (от 0 до 50):</label>
+  <input type="range" id="vol" name="vol" min="0" max="50">
+  <input type="submit" value="Отправить">
+</form>
+
+<h2>Поле search</h2>
+
+<p><strong>input type="search"</strong> используется для полей поиска (ведёт себя как обычное текстовое поле):</p>
+
+<form action="/action_page.php">
+  <label for="gsearch">Поиск Google:</label>
+  <input type="search" id="gsearch" name="gsearch">
+  <input type="submit" value="Отправить">
+</form>
+
+<h2>Поле tel</h2>
+
+<p><strong>input type="tel"</strong> используется для полей ввода, которые должны содержать номер телефона:</p>
+
+<form action="/action_page.php">
+  <label for="phone">Введите свой номер телефона:</label><br><br>
+  <input type="tel" id="phone" name="phone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required><br><br>
+  <small>Формат: 123-45-678</small><br><br>
+  <input type="submit" value="Отправить">
+</form>
+
+<h1>Поле time</h1>
+
+<p><strong>input type="time"</strong> позволяет пользователю выбрать время (без часового пояса):</p>
+
+<p>Если браузер поддерживает это, при вводе поля ввода появляется окно выбора времени.</p>
+
+<form action="/action_page.php">
+  <label for="appt">Выберите время:</label>
+  <input type="time" id="appt" name="appt">
+  <input type="submit" value="Отправить">
+</form>
+
+<p><strong>Примечание.</strong> type="time" не поддерживается в Internet Explorer 11.</p>
+
+<h1>Поле url</h1>
+
+<p><strong>input type="url"</strong> используется для полей ввода, которые должны содержать URL-адрес:</p>
+
+<form action="/action_page.php">
+  <label for="homepage">Добавьте свою домашнюю страницу:</label>
+  <input type="url" id="homepage" name="homepage">
+  <input type="submit" value="Отправить">
+</form>
+
+<h1>Поле week</h1>
+
+<p><strong>input type="week"</strong> позволяет пользователю выбрать неделю и год.</p>
+
+<p>Если браузер поддерживает это, при вводе поля ввода появляется окно выбора даты.</p>
+
+<form action="/action_page.php">
+  <label for="week">Select a week:</label>
+  <input type="week" id="week" name="week">
+  <input type="submit" value="Submit">
+</form>
+
+<p><strong>Примечание.</strong> type="week" не поддерживается в Firefox, Safari и Internet Explorer 11.</p>
+
+</body>
+</html>
