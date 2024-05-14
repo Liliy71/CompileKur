@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заголовок страницы</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+th {
+  text-align: left;
+}
+table {
+  border-spacing: 15px;
+}
+#t01 {
+  width: 100%;    
+  background-color: #f1f1c1;
+}
+</style>
+</head>
+<body>
+
+<h2>Базовая HTML таблица</h2>
+
+<table style="width:100%">
+ <tr>
+  <th>Имя</th>
+  <th>Фамилия</th> 
+  <th>Лет</th>
+ </tr>
+ <tr>
+  <td>Андрей</td>
+  <td>Щипунов</td> 
+  <td>50</td>
+ </tr>
+ <tr>
+  <td>Татьяна</td>
+  <td>Щипунова</td> 
+  <td>94</td>
+ </tr>
+ <tr>
+  <td>Кристина</td>
+  <td>Шакирова</td>
+  <td>80</td>
+ </tr>
+</table>
+
+<h2>Ячейка таблицы из двух столбцов</h2>
+<p>Чтобы ячейка занимала более одного столбца, используйте атрибут colspan.</p>
+
+<table style="width:100%">
+  <tr>
+    <th>Имя</th>
+    <th colspan="2">Телефон</th>
+  </tr>
+  <tr>
+    <td>Андрей Щипунов</td>
+    <td>8(908)2529608</td>
+    <td>+7(908)2529608</td>
+  </tr>
+</table>
+
+<h2>Ячейка таблицы, занимающая две строки</h2>
+<p>Чтобы ячейкатаблицы занимает более одной строки, используйте атрибут rowspan.</p>
+
+<table style="width:100%">
+ <tr>
+  <th>Имя:</th>
+  <td>Андрей Щипунов</td>
+ </tr>
+ <tr>
+  <th rowspan="2">Телефон:</th>
+  <td>8(908)2529608</td>
+ </tr>
+ <tr>
+  <td>+7(908)2529608</td>
+ </tr>
+</table>
+
+<h2>Таблица с подписью</h2>
+<p>Чтобы добавить заголовок к таблице, используйте тег caption.</p>
+
+<table style="width:100%">
+ <caption>Ежемесячные сбережения</caption>
+ <tr>
+  <th>Месяц</th>
+  <th>Экономия</th>
+ </tr>
+ <tr>
+  <td>Январь</td>
+  <td>$100</td>
+ </tr>
+ <tr>
+  <td>Февраль</td>
+  <td>$50</td>
+ </tr>
+</table>
+
+<table id="t01">
+ <tr>
+  <th>Имя</th>
+  <th>Фамилия</th> 
+  <th>Лет</th>
+ </tr>
+ <tr>
+  <td>Андрей</td>
+  <td>Щипунов</td> 
+  <td>50</td>
+ </tr>
+ <tr>
+  <td>Татьяна</td>
+  <td>Щипунова</td> 
+  <td>94</td>
+ </tr>
+ <tr>
+  <td>Кристина</td>
+  <td>Шакирова</td>
+  <td>80</td>
+ </tr>
+</table>
+
+</body>
+</html>
