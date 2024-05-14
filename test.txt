@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="ru">
   <head>
     <meta charset="utf-8">
@@ -38,7 +37,6 @@
         <section>
           <h2>И третья</h2>
           <p>Вы уже должны были начать догадываться.</p>
-        </section>
       </article>
     </main>
     <footer>
@@ -46,22 +44,4 @@
     </footer>
     <!-- сюда можно подключить jquery <script src="scripts/app.js" defer></script> -->
   </body>
-=======
-
-<html lang="ru">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title> Пример простой страницы html</title>
-
-</head>
-
-<body>
-
-Пример простой страницы - для того, чтобы посмотреть код, нажмите ctrl + U
-</body>
-
->>>>>>> 8e48e5d077bdeb57bf787502b4003bd7069bd977
 </html>
