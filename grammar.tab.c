@@ -71,9 +71,13 @@
 
 	#define YYERROR_VERBOSE 1
 	#include <stdio.h>
+	#include <stdlib.h>
 	extern int line;
+	int yylex(void);
+	void yyerror(char *msg);
 
-#line 77 "grammar.tab.c"
+
+#line 81 "grammar.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -531,10 +535,10 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    17,    17,    18,    19,    21,    22,    24,    25,    27,
-      28,    30,    32,    33,    35,    36,    37,    38,    39,    40,
-      42,    44,    46,    47,    49,    50,    51,    52,    53,    54,
-      55,    56,    57,    58
+       0,    21,    21,    22,    23,    25,    26,    28,    29,    31,
+      32,    34,    36,    37,    39,    40,    41,    42,    43,    44,
+      46,    48,    50,    51,    53,    54,    55,    56,    57,    58,
+      59,    60,    61,    62
 };
 #endif
 
@@ -1150,13 +1154,13 @@ yyreduce:
   switch (yyn)
     {
   case 4: /* html_doc: error  */
-#line 19 "grammar.y"
+#line 23 "grammar.y"
                         { yyerrok; printf("in line %d.\n", line); exit(-1);}
-#line 1156 "grammar.tab.c"
+#line 1160 "grammar.tab.c"
     break;
 
 
-#line 1160 "grammar.tab.c"
+#line 1164 "grammar.tab.c"
 
       default: break;
     }

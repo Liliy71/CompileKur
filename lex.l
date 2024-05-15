@@ -9,7 +9,14 @@
 	extern FILE* yyin;
 	int line = 1;
 	int line_body=1;
+	int flag_error=1;
 	int flag_warning=1;
+	void HandlerWarning(const char* msg);
+	void HandlerError(const char* msg);
+	void StackCheck(char* data);
+	void StackPush(char* value);
+	void StackDeinit();
+	void StackInit();
 	#ifndef unix
 	#define fileno _fileno
 	#endif
@@ -471,6 +478,7 @@ void HandlerWarning(const char* msg){
 }
 void HandlerError(const char* msg){
 	printf("ERROR: %s\n, line: %d\n", msg, line);
+	flag_error=0;
 	exit(-1);
 }
 int yywrap(){}

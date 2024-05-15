@@ -1,7 +1,11 @@
 %{
 	#define YYERROR_VERBOSE 1
 	#include <stdio.h>
+	#include <stdlib.h>
 	extern int line;
+	int yylex(void);
+	void yyerror(char *msg);
+
 %}
 %token CLOSING_MORE_SIGN
 %token TAG_DOCKTYPE TAG_COMMENT_START TAG_COMMENT_END

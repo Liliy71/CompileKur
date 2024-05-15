@@ -5,6 +5,7 @@
 #include "grammar.tab.h"
 
 int line;
+int flag_error;
 int line_body;
 typedef struct stack {
 	char tagName[20];
@@ -67,7 +68,7 @@ void StackPrint() {
 	}
 }
 void StackDeinit() {
-	if(!StackIsEmpty()){
+	if(!StackIsEmpty()&&flag_error){
 		printf("The following closing tags were not found due to program termination:\nbody, line: %d; ", line_body);
 		StackPrint();
 		printf("\n");
@@ -84,7 +85,6 @@ void StackInit() {
 }
 
 void StackCheck(char* data) {
-
 	if (StackIsEmpty()) {
 		printf("ERROR: there were no opening tags.\n");
 		exit(-1);
